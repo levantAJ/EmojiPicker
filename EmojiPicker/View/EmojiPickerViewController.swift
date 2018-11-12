@@ -92,6 +92,10 @@ extension EmojiPickerViewController: UICollectionViewDataSource {
         if let group = EmojiGroup(index: indexPath.item) {
             cell.image = UIImage(named: group.rawValue, in: Bundle(for: GroupCollectionViewCell.self), compatibleWith: nil)
         }
+        if selectedGroupCell == nil {
+            selectedGroupCell = cell
+            selectedGroupCell?.isSelected = true
+        }
         return cell
     }
 }
@@ -133,12 +137,11 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
 // MARK: - UIScrollViewDelegate
 
 extension EmojiPickerViewController {
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let indexPath = emojisCollectionView.indexPathForItem(at: scrollView.contentOffset),
-            let cell = groupsCollectionView.cellForItem(at: IndexPath(item: indexPath.section, section: 0)) as? GroupCollectionViewCell else { return }
-        selectedGroupCell?.isSelected = false
-        selectedGroupCell = cell
-        selectedGroupCell?.isSelected = true
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        selectCurrentGroupCell()
+    }
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        selectCurrentGroupCell()
     }
 }
 
@@ -179,5 +182,14 @@ extension EmojiPickerViewController {
         layout = groupsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.headerReferenceSize = CGSize(width: 0, height: 0)
         
+    }
+    
+    private func selectCurrentGroupCell() {
+        guard let emojiCell = emojisCollectionView.visibleCells.first,
+            let indexPath = emojisCollectionView.indexPath(for: emojiCell),
+            let groupCell = groupsCollectionView.cellForItem(at: IndexPath(item: indexPath.section, section: 0)) as? GroupCollectionViewCell else { return }
+        selectedGroupCell?.isSelected = false
+        selectedGroupCell = groupCell
+        selectedGroupCell?.isSelected = true
     }
 }
