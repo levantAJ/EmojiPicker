@@ -13,6 +13,7 @@
 		33D2B514219908DC00D528EC /* EmojiPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D2B513219908DC00D528EC /* EmojiPicker.storyboard */; };
 		33D2B5172199094800D528EC /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D2B5162199094800D528EC /* EmojiPickerViewController.swift */; };
 		33D2B519219909AD00D528EC /* EmojiPickerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D2B518219909AD00D528EC /* EmojiPickerContentViewController.swift */; };
+		33D2B51B219911C900D528EC /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D2B51A219911C900D528EC /* EmojiPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		33D2B513219908DC00D528EC /* EmojiPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmojiPicker.storyboard; sourceTree = "<group>"; };
 		33D2B5162199094800D528EC /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
 		33D2B518219909AD00D528EC /* EmojiPickerContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerContentViewController.swift; sourceTree = "<group>"; };
+		33D2B51A219911C900D528EC /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				33D2B5152199093800D528EC /* View */,
 				33D2B512219908C700D528EC /* Storyboard */,
 				33D2B4F9219906C300D528EC /* EmojiPicker.h */,
+				33D2B51A219911C900D528EC /* EmojiPicker.swift */,
 				33D2B4FA219906C300D528EC /* Info.plist */,
 			);
 			path = EmojiPicker;
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33D2B5172199094800D528EC /* EmojiPickerViewController.swift in Sources */,
+				33D2B51B219911C900D528EC /* EmojiPicker.swift in Sources */,
 				33D2B519219909AD00D528EC /* EmojiPickerContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
