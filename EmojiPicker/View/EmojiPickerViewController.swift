@@ -33,10 +33,12 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
             emojisCollectionView?.reloadData()
         }
     }
+    public var dismissAfterSelected = false
     public weak var delegate: EmojiPickerViewControllerDelegate?
     
     @IBOutlet weak var emojisCollectionView: UICollectionView!
     @IBOutlet weak var groupsCollectionView: UICollectionView!
+    var selectedGroupCell: GroupCollectionViewCell?
     lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel()
     
     override public func awakeFromNib() {
@@ -128,6 +130,8 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
 
 extension EmojiPickerViewController: GroupCollectionViewCellDelegate {
     func groupCollectionViewCell(_ cell: GroupCollectionViewCell, didSelect indexPath: IndexPath) {
+        selectedGroupCell?.isSelected = false
+        selectedGroupCell = cell
         if indexPath.item == 0 {
             emojisCollectionView.scrollRectToVisible(CGRect(origin: .zero, size: CGSize(width: 1, height: 1)), animated: true)
         } else {

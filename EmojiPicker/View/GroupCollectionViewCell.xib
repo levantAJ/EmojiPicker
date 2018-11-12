@@ -19,8 +19,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7R-w7-u2W">
-                        <rect key="frame" x="4" y="4" width="42" height="42"/>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7R-w7-u2W">
+                        <rect key="frame" x="11" y="11" width="28" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="T7R-w7-u2W" secondAttribute="height" multiplier="1:1" id="CQP-t0-Nef"/>
+                        </constraints>
+                        <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                         <connections>
                             <action selector="groupButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="BNC-4f-AQ7"/>
                         </connections>
@@ -28,10 +32,8 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="T7R-w7-u2W" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="0or-Cs-lyB"/>
-                <constraint firstAttribute="bottom" secondItem="T7R-w7-u2W" secondAttribute="bottom" constant="4" id="2TH-W6-JAc"/>
-                <constraint firstAttribute="trailing" secondItem="T7R-w7-u2W" secondAttribute="trailing" constant="4" id="5WT-8w-IDO"/>
-                <constraint firstItem="T7R-w7-u2W" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="btN-QO-L1h"/>
+                <constraint firstItem="T7R-w7-u2W" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="SvJ-r9-Tnr"/>
+                <constraint firstItem="T7R-w7-u2W" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="b6S-8I-gH8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>

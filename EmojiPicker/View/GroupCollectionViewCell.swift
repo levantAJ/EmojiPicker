@@ -24,12 +24,32 @@ final class GroupCollectionViewCell: UICollectionViewCell {
             groupButton.setImage(image, for: .normal)
         }
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            groupButton.backgroundColor = isSelected ? UIColor.lightGray.withAlphaComponent(0.5) : .clear
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        groupButton.layer.cornerRadius = groupButton.frame.width/2
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        groupButton.backgroundColor = .clear
+    }
 }
 
 // MARK: - User Interactions
 
 extension GroupCollectionViewCell {
     @IBAction func groupButtonTapped(_ button: UIButton) {
+        isSelected = true
+        if #available(iOSApplicationExtension 10.0, *) {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
         delegate?.groupCollectionViewCell(self, didSelect: indexPath)
     }
 }
