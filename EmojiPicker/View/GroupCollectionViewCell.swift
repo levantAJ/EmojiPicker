@@ -16,6 +16,7 @@ final class GroupCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var groupButton: UIButton!
     var indexPath: IndexPath!
     weak var delegate: GroupCollectionViewCellDelegate?
+    lazy var vibrator: Vibrating = Vibrator()
     
     var image: UIImage? {
         didSet {
@@ -47,9 +48,7 @@ final class GroupCollectionViewCell: UICollectionViewCell {
 extension GroupCollectionViewCell {
     @IBAction func groupButtonTapped(_ button: UIButton) {
         isSelected = true
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        }
+        vibrator.vibrate()
         delegate?.groupCollectionViewCell(self, didSelect: indexPath)
     }
 }

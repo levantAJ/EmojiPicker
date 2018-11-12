@@ -27,6 +27,7 @@
 		33D2B507219906C300D528EC /* EmojiPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 33D2B4F9219906C300D528EC /* EmojiPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33D2B514219908DC00D528EC /* EmojiPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D2B513219908DC00D528EC /* EmojiPicker.storyboard */; };
 		33D2B5172199094800D528EC /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D2B5162199094800D528EC /* EmojiPickerViewController.swift */; };
+		33D716A2219A425B00599BDD /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716A1219A425B00599BDD /* Vibrator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		33D2B506219906C300D528EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33D2B513219908DC00D528EC /* EmojiPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmojiPicker.storyboard; sourceTree = "<group>"; };
 		33D2B5162199094800D528EC /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
+		33D716A1219A425B00599BDD /* Vibrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibrator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				334EE9352199C464000404B8 /* UserDefaultsProtocol.swift */,
+				33D716A1219A425B00599BDD /* Vibrator.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				337131AD21991D4900838035 /* EmojiPicker.swift in Sources */,
 				3381560B219982E30059EF2F /* String.swift in Sources */,
 				337131B621993D3100838035 /* EmojiPickerViewModel.swift in Sources */,
+				33D716A2219A425B00599BDD /* Vibrator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,12 +34,14 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
         }
     }
     public var dismissAfterSelected = false
+    public var isEmojiVibrationEnabled = false
     public weak var delegate: EmojiPickerViewControllerDelegate?
     
     @IBOutlet weak var emojisCollectionView: UICollectionView!
     @IBOutlet weak var groupsCollectionView: UICollectionView!
     var selectedGroupCell: GroupCollectionViewCell?
     lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel(userDefaults: UserDefaults.standard)
+    lazy var vibrator: Vibrating = Vibrator()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -125,6 +127,7 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == emojisCollectionView {
             guard let emoji = viewModel.emojis(at: indexPath)?.first else { return }
+            vibrator.vibrate()
             delegate?.emojiPickerViewController(self, didSelect: emoji)
             viewModel.select(emoji: emoji)
             if dismissAfterSelected {
