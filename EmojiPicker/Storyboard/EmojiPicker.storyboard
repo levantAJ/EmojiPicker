@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-PD-n4R">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="156"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="163"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="iDy-gK-PX0">
                                     <size key="itemSize" width="40" height="40"/>
@@ -30,19 +30,19 @@
                                 <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nns-bz-BcM" userLabel="Bottom Wrapper View">
-                                <rect key="frame" x="0.0" y="156" width="200" height="44"/>
+                                <rect key="frame" x="0.0" y="163" width="200" height="37"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5HQ-CH-ahy">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="37"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7mm-t1-myC">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="37"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rRN-At-htv" userLabel="Group Collection View">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="d9O-os-XLF">
                                             <size key="itemSize" width="50" height="50"/>
@@ -55,7 +55,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="606-Io-F62"/>
+                                    <constraint firstAttribute="height" constant="37" id="606-Io-F62"/>
                                     <constraint firstAttribute="trailing" secondItem="5HQ-CH-ahy" secondAttribute="trailing" id="H8f-fc-J0j"/>
                                     <constraint firstItem="rRN-At-htv" firstAttribute="top" secondItem="Nns-bz-BcM" secondAttribute="top" id="RHC-8a-AXe"/>
                                     <constraint firstItem="5HQ-CH-ahy" firstAttribute="top" secondItem="Nns-bz-BcM" secondAttribute="top" id="Rzh-SD-7wc"/>

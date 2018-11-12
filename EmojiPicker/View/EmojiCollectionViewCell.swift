@@ -15,9 +15,9 @@ class EmojiCollectionViewCell: UICollectionViewCell {
             emojiLabel.text = emojis.first
         }
     }
-    var fontSize: CGFloat = 31 {
+    var emojiFontSize: CGFloat = 31 {
         didSet {
-            emojiLabel.font = UIFont.systemFont(ofSize: fontSize)
+            emojiLabel.font = UIFont.systemFont(ofSize: emojiFontSize)
         }
     }
 }
@@ -25,5 +25,6 @@ class EmojiCollectionViewCell: UICollectionViewCell {
 extension Constant {
     struct EmojiCollectionViewCell {
         static let identifier = "EmojiCollectionViewCell"
+        static let size = CGSize(width: 37, height: 37)
     }
 }

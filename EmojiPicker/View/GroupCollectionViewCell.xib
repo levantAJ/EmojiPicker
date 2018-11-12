@@ -19,20 +19,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlN-Qe-bWQ" userLabel="Group Button">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7R-w7-u2W">
                         <rect key="frame" x="4" y="4" width="42" height="42"/>
+                        <connections>
+                            <action selector="groupButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="BNC-4f-AQ7"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="NlN-Qe-bWQ" secondAttribute="trailing" constant="4" id="3tX-HI-frB"/>
-                <constraint firstItem="NlN-Qe-bWQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="F4o-QX-50e"/>
-                <constraint firstItem="NlN-Qe-bWQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="G8t-aQ-UrW"/>
-                <constraint firstAttribute="bottom" secondItem="NlN-Qe-bWQ" secondAttribute="bottom" constant="4" id="jGh-Ji-5pH"/>
+                <constraint firstItem="T7R-w7-u2W" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="0or-Cs-lyB"/>
+                <constraint firstAttribute="bottom" secondItem="T7R-w7-u2W" secondAttribute="bottom" constant="4" id="2TH-W6-JAc"/>
+                <constraint firstAttribute="trailing" secondItem="T7R-w7-u2W" secondAttribute="trailing" constant="4" id="5WT-8w-IDO"/>
+                <constraint firstItem="T7R-w7-u2W" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="btN-QO-L1h"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
-                <outlet property="groupButton" destination="NlN-Qe-bWQ" id="7NA-rC-qPR"/>
+                <outlet property="groupButton" destination="T7R-w7-u2W" id="zMt-57-e8g"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>
         </collectionViewCell>

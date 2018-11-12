@@ -8,8 +8,14 @@
 
 import UIKit
 
-class GroupCollectionViewCell: UICollectionViewCell {
+protocol GroupCollectionViewCellDelegate: class {
+    func groupCollectionViewCell(_ cell: GroupCollectionViewCell, didSelect indexPath: IndexPath)
+}
+
+final class GroupCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var groupButton: UIButton!
+    var indexPath: IndexPath!
+    weak var delegate: GroupCollectionViewCellDelegate?
     
     var image: UIImage? {
         didSet {
@@ -17,6 +23,14 @@ class GroupCollectionViewCell: UICollectionViewCell {
             groupButton.imageView?.contentMode = .scaleAspectFit
             groupButton.setImage(image, for: .normal)
         }
+    }
+}
+
+// MARK: - User Interactions
+
+extension GroupCollectionViewCell {
+    @IBAction func groupButtonTapped(_ button: UIButton) {
+        delegate?.groupCollectionViewCell(self, didSelect: indexPath)
     }
 }
 
