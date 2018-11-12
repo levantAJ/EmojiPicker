@@ -130,6 +130,18 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
     }
 }
 
+// MARK: - UIScrollViewDelegate
+
+extension EmojiPickerViewController {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let indexPath = emojisCollectionView.indexPathForItem(at: scrollView.contentOffset),
+            let cell = groupsCollectionView.cellForItem(at: IndexPath(item: indexPath.section, section: 0)) as? GroupCollectionViewCell else { return }
+        selectedGroupCell?.isSelected = false
+        selectedGroupCell = cell
+        selectedGroupCell?.isSelected = true
+    }
+}
+
 // MARK: - GroupCollectionViewCellDelegate
 
 extension EmojiPickerViewController: GroupCollectionViewCellDelegate {
