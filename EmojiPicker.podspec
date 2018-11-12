@@ -12,6 +12,6 @@ Emoji picker written on Swift 4.2 by levantAJ
   s.ios.deployment_target = '9.0'
   s.swift_version = '4.2'
   s.source_files = 'EmojiPicker/**/*.{swift}'
-  s.resources = "EmojiPicker/**/*.{storyboard}"
- 
+  s.resources = "EmojiPicker/**/*.{storyboard,xib,json,xcassets}"
+  
 end

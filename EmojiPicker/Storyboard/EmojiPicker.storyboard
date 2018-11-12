@@ -1,31 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C9g-kF-BmS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6lw-4L-y3L">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Emoji Picker Content View Controller-->
-        <scene sceneID="jor-io-WLH">
+        <!--Emoji Picker View Controller-->
+        <scene sceneID="5pz-Ma-R5R">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="60R-Ek-0dA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="C9g-kF-BmS" customClass="EmojiPickerContentViewController" customModule="EmojiPicker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WBr-YI-4p8">
+                <viewController id="6lw-4L-y3L" customClass="EmojiPickerViewController" customModule="EmojiPicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cVV-5C-pcb">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Luw-Sn-A3U"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-PD-n4R">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="156"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="iDy-gK-PX0">
+                                    <size key="itemSize" width="40" height="40"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nns-bz-BcM" userLabel="Bottom Wrapper View">
+                                <rect key="frame" x="0.0" y="156" width="200" height="44"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5HQ-CH-ahy">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7mm-t1-myC">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rRN-At-htv" userLabel="Group Collection View">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="d9O-os-XLF">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="606-Io-F62"/>
+                                    <constraint firstAttribute="trailing" secondItem="5HQ-CH-ahy" secondAttribute="trailing" id="H8f-fc-J0j"/>
+                                    <constraint firstItem="rRN-At-htv" firstAttribute="top" secondItem="Nns-bz-BcM" secondAttribute="top" id="RHC-8a-AXe"/>
+                                    <constraint firstItem="5HQ-CH-ahy" firstAttribute="top" secondItem="Nns-bz-BcM" secondAttribute="top" id="Rzh-SD-7wc"/>
+                                    <constraint firstAttribute="bottom" secondItem="5HQ-CH-ahy" secondAttribute="bottom" id="Tmz-wB-MZA"/>
+                                    <constraint firstAttribute="bottom" secondItem="rRN-At-htv" secondAttribute="bottom" id="aFM-Vl-fE2"/>
+                                    <constraint firstItem="5HQ-CH-ahy" firstAttribute="leading" secondItem="Nns-bz-BcM" secondAttribute="leading" id="f3x-ye-HDV"/>
+                                    <constraint firstItem="rRN-At-htv" firstAttribute="leading" secondItem="Nns-bz-BcM" secondAttribute="leading" id="qP7-oo-qgL"/>
+                                    <constraint firstAttribute="trailing" secondItem="rRN-At-htv" secondAttribute="trailing" id="x9R-Wp-s53"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yPK-PD-n4R" firstAttribute="leading" secondItem="cVV-5C-pcb" secondAttribute="leading" id="1Pr-yM-9w8"/>
+                            <constraint firstItem="Nns-bz-BcM" firstAttribute="trailing" secondItem="1ys-WP-ntt" secondAttribute="trailing" id="2Rc-NX-Vmr"/>
+                            <constraint firstAttribute="trailing" secondItem="yPK-PD-n4R" secondAttribute="trailing" id="9P6-tW-Y7l"/>
+                            <constraint firstItem="yPK-PD-n4R" firstAttribute="top" secondItem="cVV-5C-pcb" secondAttribute="top" id="EgW-pX-t0a"/>
+                            <constraint firstItem="Nns-bz-BcM" firstAttribute="bottom" secondItem="1ys-WP-ntt" secondAttribute="bottom" id="RKA-Le-4Xi"/>
+                            <constraint firstItem="Nns-bz-BcM" firstAttribute="leading" secondItem="1ys-WP-ntt" secondAttribute="leading" id="bj6-qd-k0j"/>
+                            <constraint firstItem="Nns-bz-BcM" firstAttribute="top" secondItem="yPK-PD-n4R" secondAttribute="bottom" id="kEi-Za-G3A"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1ys-WP-ntt"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="200" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="200"/>
+                    <connections>
+                        <outlet property="emojisCollectionView" destination="yPK-PD-n4R" id="BAY-4e-MPA"/>
+                        <outlet property="groupsCollectionView" destination="rRN-At-htv" id="dLX-F0-qNq"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKm-i3-yWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="752" y="207"/>
+            <point key="canvasLocation" x="608" y="-75.562218890554732"/>
         </scene>
     </scenes>
 </document>

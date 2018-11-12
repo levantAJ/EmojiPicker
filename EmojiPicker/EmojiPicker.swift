@@ -6,4 +6,11 @@
 //  Copyright © 2018 levantAJ. All rights reserved.
 //
 
-public class EmojiPicker {}
+import UIKit
+
+public class EmojiPicker {
+    public class var viewController: EmojiPickerViewController {
+        let storyboard = UIStoryboard(name: "EmojiPicker", bundle: Bundle(for: EmojiPickerViewController.self))
+        return storyboard.instantiateInitialViewController() as! EmojiPickerViewController
+    }
+}
