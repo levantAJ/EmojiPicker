@@ -127,7 +127,9 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == emojisCollectionView {
             guard let emoji = viewModel.emojis(at: indexPath)?.first else { return }
-            vibrator.vibrate()
+            if isEmojiVibrationEnabled {
+                vibrator.vibrate()
+            }
             delegate?.emojiPickerViewController(self, didSelect: emoji)
             viewModel.select(emoji: emoji)
             if dismissAfterSelected {
