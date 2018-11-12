@@ -156,10 +156,11 @@ extension EmojiPickerViewController: GroupCollectionViewCellDelegate {
     func groupCollectionViewCell(_ cell: GroupCollectionViewCell, didSelect indexPath: IndexPath) {
         selectedGroupCell?.isSelected = false
         selectedGroupCell = cell
+        selectedGroupCell?.isSelected = true
         if indexPath.item == 0 {
             emojisCollectionView.scrollRectToVisible(CGRect(origin: .zero, size: CGSize(width: 1, height: 1)), animated: true)
-        } else {
-            emojisCollectionView.scrollToItem(at: IndexPath(item: 0, section: indexPath.item), at: .top, animated: true)
+        } else if let attributes = emojisCollectionView.collectionViewLayout.layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: indexPath.item)) {
+            emojisCollectionView.setContentOffset(CGPoint(x: 0, y: attributes.frame.origin.y - emojisCollectionView.contentInset.top), animated: true)
         }
     }
 }
