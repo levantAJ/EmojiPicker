@@ -12,13 +12,16 @@ protocol EmojiPickerViewModelProtocol {
     var numberOfSections: Int { get }
     func numberOfEmojis(section: Int) -> Int
     func emojis(at indexPath: IndexPath) -> [String]?
+    func select(emoji: String)
 }
 
 final class EmojiPickerViewModel {
     var emojis: [Int: [[String]]] = [:]
+    let userDefaults: UserDefaultsProtocol
     
-    init() {
-        let frequentlyUsedEmojis = UserDefaults.standard.array(forKey: Constant.EmojiPickerViewModel.frequentlyUsed) as? [[String]]
+    init(userDefaults: UserDefaultsProtocol) {
+        self.userDefaults = userDefaults
+        let frequentlyUsedEmojis = userDefaults.array(forKey: Constant.EmojiPickerViewModel.frequentlyUsed) as? [[String]]
         self.emojis[EmojiGroup.frequentlyUsed.index] = frequentlyUsedEmojis ?? []
         let path = Bundle(for: EmojiPickerViewModel.self).path(forResource: "emojis", ofType: "json")!
         let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
@@ -44,6 +47,16 @@ extension EmojiPickerViewModel: EmojiPickerViewModelProtocol {
     func emojis(at indexPath: IndexPath) -> [String]? {
         guard let type = EmojiGroup(index: indexPath.section) else { return nil }
         return emojis[type.index]?[indexPath.item]
+    }
+    
+    func select(emoji: String) {
+        var frequentlyUsedEmojis = userDefaults.array(forKey: Constant.EmojiPickerViewModel.frequentlyUsed) as? [[String]] ?? []
+        if let index = frequentlyUsedEmojis.firstIndex(of: [emoji]) {
+            frequentlyUsedEmojis.remove(at: index)
+        }
+        frequentlyUsedEmojis = [[emoji]] + frequentlyUsedEmojis
+        frequentlyUsedEmojis = Array(frequentlyUsedEmojis.prefix(upTo: min(frequentlyUsedEmojis.count, 30)))
+        userDefaults.set(frequentlyUsedEmojis, forKey: Constant.EmojiPickerViewModel.frequentlyUsed)
     }
 }
 

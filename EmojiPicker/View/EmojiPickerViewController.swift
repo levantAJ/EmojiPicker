@@ -39,7 +39,7 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
     @IBOutlet weak var emojisCollectionView: UICollectionView!
     @IBOutlet weak var groupsCollectionView: UICollectionView!
     var selectedGroupCell: GroupCollectionViewCell?
-    lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel()
+    lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel(userDefaults: UserDefaults.standard)
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -122,6 +122,7 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
         if collectionView == emojisCollectionView {
             guard let emoji = viewModel.emojis(at: indexPath)?.first else { return }
             delegate?.emojiPickerViewController(self, didSelect: emoji)
+            viewModel.select(emoji: emoji)
             if dismissAfterSelected {
                 dismiss(animated: true, completion: nil)
             }

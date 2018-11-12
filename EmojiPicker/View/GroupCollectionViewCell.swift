@@ -47,7 +47,7 @@ final class GroupCollectionViewCell: UICollectionViewCell {
 extension GroupCollectionViewCell {
     @IBAction func groupButtonTapped(_ button: UIButton) {
         isSelected = true
-        if #available(iOSApplicationExtension 10.0, *) {
+        if #available(iOS 10.0, *) {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
         delegate?.groupCollectionViewCell(self, didSelect: indexPath)
