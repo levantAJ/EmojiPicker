@@ -33,12 +33,12 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
             emojisCollectionView?.reloadData()
         }
     }
-    public var backgroundColor: UIColor? = .clear {
+    public var backgroundColor: UIColor? = UIColor.white.withAlphaComponent(0.5) {
         didSet {
             changeDarkModeStyle()
         }
     }
-    public var darkModeBackgroundColor: UIColor? = .black {
+    public var darkModeBackgroundColor: UIColor? = UIColor.black.withAlphaComponent(0.5) {
         didSet {
             changeDarkModeStyle()
         }
