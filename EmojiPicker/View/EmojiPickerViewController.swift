@@ -64,6 +64,7 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
     var selectedGroupCell: GroupCollectionViewCell?
     lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel(userDefaults: UserDefaults.standard)
     lazy var vibrator: Vibrating = Vibrator()
+    lazy var tagView: TagViewProtocol = TagView.shared
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -104,6 +105,7 @@ extension EmojiPickerViewController: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == emojisCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.EmojiCollectionViewCell.identifier, for: indexPath) as! EmojiCollectionViewCell
+            cell.delegate = self
             cell.emojiFontSize = emojiFontSize
             if let emojis = viewModel.emojis(at: indexPath) {
                 cell.emojis = emojis
@@ -147,26 +149,6 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.GroupHeaderView.identifier, for: indexPath)
         return headerView
     }
-    
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == emojisCollectionView {
-            guard let emojis = viewModel.emojis(at: indexPath),
-                let emoji = emojis.first,
-                let cell = collectionView.cellForItem(at: indexPath) else { return }
-            if isEmojiVibrationEnabled {
-                vibrator.vibrate()
-            }
-            delegate?.emojiPickerViewController(self, didSelect: emoji)
-            viewModel.select(emoji: emoji)
-            let tagView = TagView.shared
-            tagView.show(sourceView: collectionView, sourceRect: cell.frame, emojis: emojis, emojiFontSize: emojiFontSize)
-            if dismissAfterSelected {
-                dismiss(animated: true, completion: nil)
-            } else {
-                emojisCollectionView.reloadSections(IndexSet(integer: 0))
-            }
-        }
-    }
 }
 
 // MARK: - UIScrollViewDelegate
@@ -177,6 +159,32 @@ extension EmojiPickerViewController {
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         selectCurrentGroupCell()
+    }
+}
+
+// MARK: - GroupCollectionViewCellDelegate
+
+extension EmojiPickerViewController: EmojiCollectionViewCellDelegate {
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emojis: [String]) {
+        tagView.show(sourceView: emojisCollectionView, sourceRect: cell.frame, emojis: emojis, emojiFontSize: emojiFontSize)
+    }
+    
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emojis: [String]) {
+        guard let emoji = emojis.first else { return }
+        if isEmojiVibrationEnabled {
+            vibrator.vibrate()
+        }
+        delegate?.emojiPickerViewController(self, didSelect: emoji)
+        viewModel.select(emoji: emoji)
+        if dismissAfterSelected {
+            dismiss(animated: true, completion: nil)
+        } else {
+            emojisCollectionView.reloadSections(IndexSet(integer: 0))
+        }
+    }
+    
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpOutside emojis: [String]) {
+        tagView.hide()
     }
 }
 

@@ -8,9 +8,18 @@
 
 import UIKit
 
+protocol TagViewProtocol {
+    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat)
+    func hide()
+}
+
 final class TagView: UIView {
     static let shared = TagView()
-    
+}
+
+// MARK: - TagViewProtocol
+
+extension TagView: TagViewProtocol {
     func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat) {
         let image = UIImage(named: "emoji-tag", in: Bundle(for: TagView.self), compatibleWith: nil)!
         frame.size.width = Constant.EmojiCollectionViewCell.size.width + 16
