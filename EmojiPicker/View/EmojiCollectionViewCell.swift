@@ -19,7 +19,9 @@ final class EmojiCollectionViewCell: UICollectionViewCell {
     weak var delegate: EmojiCollectionViewCellDelegate?
     var emojis: [String]! {
         didSet {
-            emojiButton.setTitle(emojis.first, for: .normal)
+            UIView.performWithoutAnimation {
+                emojiButton.setTitle(emojis.first, for: .normal)
+            }
         }
     }
     var emojiFontSize: CGFloat = 31 {

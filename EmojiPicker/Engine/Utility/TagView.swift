@@ -14,7 +14,22 @@ protocol TagViewProtocol {
 }
 
 final class TagView: UIView {
-    static let shared = TagView()
+    var imageView: UIImageView!
+    var titleLabel: UILabel!
+    
+    static let shared: TagView = {
+        let view = TagView()
+        view.backgroundColor = .clear
+        view.layer.zPosition = .greatestFiniteMagnitude
+        view.imageView = UIImageView(frame: view.bounds)
+        view.addSubview(view.imageView)
+        
+        view.titleLabel = UILabel(frame: view.bounds)
+        view.titleLabel.textAlignment = .center
+        view.titleLabel.frame.origin.y = 5
+        view.addSubview(view.titleLabel)
+        return view
+    }()
 }
 
 // MARK: - TagViewProtocol
@@ -26,20 +41,12 @@ extension TagView: TagViewProtocol {
         frame.size.height = frame.size.width * image.size.height / image.size.width
         frame.origin.x = sourceRect.midX - frame.width/2
         frame.origin.y = sourceRect.minY - frame.height + sourceRect.height - 2
-        backgroundColor = .clear
-        layer.zPosition = .greatestFiniteMagnitude
-        let imageView = UIImageView(frame: bounds)
         imageView.image = image
-        addSubview(imageView)
         
-        let titleLabel = UILabel(frame: bounds)
         titleLabel.text = emojis.first
         titleLabel.font = UIFont.systemFont(ofSize: emojiFontSize)
-        titleLabel.textAlignment = .center
         titleLabel.sizeToFit()
-        titleLabel.frame.origin.y = 6
         titleLabel.frame.size.width = bounds.width
-        addSubview(titleLabel)
         
         sourceView.addSubview(self)
     }

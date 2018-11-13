@@ -170,10 +170,8 @@ extension EmojiPickerViewController: EmojiCollectionViewCellDelegate {
     }
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emojis: [String]) {
+        tagView.hide()
         guard let emoji = emojis.first else { return }
-        if isEmojiVibrationEnabled {
-            vibrator.vibrate()
-        }
         delegate?.emojiPickerViewController(self, didSelect: emoji)
         viewModel.select(emoji: emoji)
         if dismissAfterSelected {
