@@ -36,6 +36,8 @@ community can help you solve it.
 ## How To Use
 
 ```swift
+import EmojiPicker
+
 let emojiPickerVC = EmojiPicker.viewController
 emojiPickerVC.sourceView = view
 emojiPickerVC.sourceRect = targetView.frame
