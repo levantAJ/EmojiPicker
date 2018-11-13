@@ -48,6 +48,11 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
             changeDarkModeStyle()
         }
     }
+    public var language: String? {
+        didSet {
+            UserDefaults.standard.set(language, forKey: Constant.CurrentLanguage.currentLanguageKey)
+        }
+    }
     public var dismissAfterSelected = false
     public var isEmojiVibrationEnabled = false
     public weak var delegate: EmojiPickerViewControllerDelegate?
