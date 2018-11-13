@@ -33,12 +33,26 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
             emojisCollectionView?.reloadData()
         }
     }
+    public var backgroundColor: UIColor? {
+        didSet {
+            popoverPresentationController?.backgroundColor = backgroundColor
+        }
+    }
+    public var isDarkMode = false {
+        didSet {
+            backgroundColor = isDarkMode ? .black : .clear
+            bottomVisualEffectView?.effect = UIBlurEffect(style: isDarkMode ? .dark : .light)
+            groupTopLineView.backgroundColor = UIColor(hexString: isDarkMode ? "#3d3d3d" : "#9d9d9d")?.withAlphaComponent(0.3)
+        }
+    }
     public var dismissAfterSelected = false
     public var isEmojiVibrationEnabled = false
     public weak var delegate: EmojiPickerViewControllerDelegate?
     
     @IBOutlet weak var emojisCollectionView: UICollectionView!
     @IBOutlet weak var groupsCollectionView: UICollectionView!
+    @IBOutlet weak var bottomVisualEffectView: UIVisualEffectView!
+    @IBOutlet weak var groupTopLineView: UIView!
     var selectedGroupCell: GroupCollectionViewCell?
     lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel(userDefaults: UserDefaults.standard)
     lazy var vibrator: Vibrating = Vibrator()
