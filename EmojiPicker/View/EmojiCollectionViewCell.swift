@@ -22,7 +22,7 @@ final class EmojiCollectionViewCell: UICollectionViewCell {
             emojiLabel.text = emojis.first
         }
     }
-    var emojiFontSize: CGFloat = 31 {
+    var emojiFontSize: CGFloat = 29 {
         didSet {
             emojiLabel.font = UIFont.systemFont(ofSize: emojiFontSize)
         }

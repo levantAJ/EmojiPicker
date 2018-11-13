@@ -26,7 +26,7 @@ final class TagView: UIView {
         
         view.titleLabel = UILabel(frame: view.bounds)
         view.titleLabel.textAlignment = .center
-        view.titleLabel.frame.origin.y = 9
+        view.titleLabel.frame.origin.y = 12
         view.addSubview(view.titleLabel)
         return view
     }()
@@ -37,10 +37,10 @@ final class TagView: UIView {
 extension TagView: TagViewProtocol {
     func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat) {
         let image = UIImage(named: "emoji-tag", in: Bundle(for: TagView.self), compatibleWith: nil)!
-        frame.size.width = Constant.EmojiCollectionViewCell.size.width + 27
+        frame.size.width = Constant.EmojiCollectionViewCell.size.width + 32
         frame.size.height = frame.size.width * image.size.height / image.size.width
         frame.origin.x = sourceRect.midX - frame.width/2
-        frame.origin.y = sourceRect.minY - frame.height + sourceRect.height
+        frame.origin.y = sourceRect.minY - frame.height + sourceRect.height + 2
         imageView.frame = bounds
         imageView.image = image
         

@@ -28,7 +28,7 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
             popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
         }
     }
-    public var emojiFontSize: CGFloat = 31 {
+    public var emojiFontSize: CGFloat = 29 {
         didSet {
             emojisCollectionView?.reloadData()
         }

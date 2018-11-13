@@ -54,9 +54,9 @@ emojiPickerVC.delegate = self
 emojiPickerVC.preferredContentSize = CGSize(width: 300, height: 400)
 ```
 
-- Change Emojis font size, default is `31`:
+- Change Emojis font size, default is `29`:
 ```swift
-emojiPickerVC.emojiFontSize = 31
+emojiPickerVC.emojiFontSize = 29
 ```
 
 - Dismiss dismiss picker after select an emoji, default is `false`:
