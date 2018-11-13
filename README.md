@@ -1,5 +1,5 @@
 <p align="center" >
-  <img src="icon.png" title="PaddingLabel logo" width='444' float=left>
+  <img src="icon.png" title="EmojiPicker logo" width='444' float=left>
 </p>
 
 [![Pod Version](https://cocoapod-badges.herokuapp.com/v/EmojiPicker/badge.png)](http://cocoadocs.org/docsets/EmojiPicker/)
@@ -9,6 +9,9 @@
 # EmojiPicker
 This library to show a popover to pick emojis for iOS
 
+<p align="center" >
+  <img src="example.gif" title="EmojiPicker example" width='200' float=left>
+</p>
 
 ## Requirements
 
