@@ -29,6 +29,7 @@
 		33D2B5172199094800D528EC /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D2B5162199094800D528EC /* EmojiPickerViewController.swift */; };
 		33D716A2219A425B00599BDD /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716A1219A425B00599BDD /* Vibrator.swift */; };
 		33D716A4219A746C00599BDD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716A3219A746C00599BDD /* UIColor.swift */; };
+		33D716A7219A814400599BDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33D716A9219A814400599BDD /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		33D2B5162199094800D528EC /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
 		33D716A1219A425B00599BDD /* Vibrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibrator.swift; sourceTree = "<group>"; };
 		33D716A3219A746C00599BDD /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		33D716A8219A814400599BDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		33D716AA219A815000599BDD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 			children = (
 				337131C021995CFC00838035 /* emojis.json */,
 				338155FF219973DE0059EF2F /* Assets.xcassets */,
+				33D716A9219A814400599BDD /* Localizable.strings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -282,6 +286,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				vi,
 			);
 			mainGroup = 33D2B4EC219906C300D528EC;
 			productRefGroup = 33D2B4F7219906C300D528EC /* Products */;
@@ -304,6 +309,7 @@
 				337131C121995CFC00838035 /* emojis.json in Resources */,
 				33815600219973DE0059EF2F /* Assets.xcassets in Resources */,
 				3327619821999BA100433FD4 /* EmojiHeaderView.xib in Resources */,
+				33D716A7219A814400599BDD /* Localizable.strings in Resources */,
 				337131B92199487B00838035 /* EmojiCollectionViewCell.xib in Resources */,
 				33815608219981160059EF2F /* GroupHeaderView.xib in Resources */,
 			);
@@ -356,11 +362,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		33D716A9219A814400599BDD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33D716A8219A814400599BDD /* en */,
+				33D716AA219A815000599BDD /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		33D2B508219906C300D528EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -425,6 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
