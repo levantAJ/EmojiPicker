@@ -33,9 +33,14 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
             emojisCollectionView?.reloadData()
         }
     }
-    public var backgroundColor: UIColor? {
+    public var backgroundColor: UIColor? = .clear {
         didSet {
-            popoverPresentationController?.backgroundColor = backgroundColor
+            changeDarkModeStyle()
+        }
+    }
+    public var darkModeBackgroundColor: UIColor? = .black {
+        didSet {
+            changeDarkModeStyle()
         }
     }
     public var isDarkMode = false {
@@ -103,6 +108,7 @@ extension EmojiPickerViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.GroupCollectionViewCell.identifier, for: indexPath) as! GroupCollectionViewCell
         cell.indexPath = indexPath
         cell.delegate = self
+        cell.isDarkMode = isDarkMode
         if let group = EmojiGroup(index: indexPath.item) {
             cell.image = UIImage(named: group.rawValue, in: Bundle(for: GroupCollectionViewCell.self), compatibleWith: nil)
         }
@@ -204,7 +210,7 @@ extension EmojiPickerViewController {
     }
     
     private func changeDarkModeStyle() {
-        backgroundColor = isDarkMode ? .black : .clear
+        popoverPresentationController?.backgroundColor = isDarkMode ? darkModeBackgroundColor : backgroundColor
         bottomVisualEffectView?.effect = UIBlurEffect(style: isDarkMode ? .dark : .light)
         groupTopLineView?.backgroundColor = UIColor(hexString: isDarkMode ? "#3d3d3d" : "#9d9d9d")?.withAlphaComponent(0.3)
     }

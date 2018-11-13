@@ -26,9 +26,15 @@ final class GroupCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var isDarkMode = false {
+        didSet {
+            changeDarkModeStyle()
+        }
+    }
+    
     override var isSelected: Bool {
         didSet {
-            groupButton.backgroundColor = isSelected ? UIColor.lightGray.withAlphaComponent(0.5) : .clear
+            changeDarkModeStyle()
         }
     }
     
@@ -50,6 +56,14 @@ extension GroupCollectionViewCell {
         isSelected = true
         vibrator.vibrate()
         delegate?.groupCollectionViewCell(self, didSelect: indexPath)
+    }
+}
+
+// MARK: - Privates
+
+extension GroupCollectionViewCell {
+    private func changeDarkModeStyle() {
+        groupButton.backgroundColor = isSelected ? (isDarkMode ? UIColor.black : UIColor.lightGray.withAlphaComponent(0.5)) : .clear
     }
 }
 
