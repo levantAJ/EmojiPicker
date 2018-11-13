@@ -26,7 +26,7 @@ final class TagView: UIView {
         
         view.titleLabel = UILabel(frame: view.bounds)
         view.titleLabel.textAlignment = .center
-        view.titleLabel.frame.origin.y = 12
+        view.titleLabel.frame.origin.y = 15
         view.addSubview(view.titleLabel)
         return view
     }()
@@ -40,7 +40,7 @@ extension TagView: TagViewProtocol {
         frame.size.width = Constant.EmojiCollectionViewCell.size.width + 32
         frame.size.height = frame.size.width * image.size.height / image.size.width
         frame.origin.x = sourceRect.midX - frame.width/2
-        frame.origin.y = sourceRect.minY - frame.height + sourceRect.height + 2
+        frame.origin.y = sourceRect.minY - frame.height + sourceRect.height + 5
         imageView.frame = bounds
         imageView.image = image
         
@@ -53,8 +53,6 @@ extension TagView: TagViewProtocol {
     }
     
     func hide() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            self?.removeFromSuperview()
-        }
+        removeFromSuperview()
     }
 }
