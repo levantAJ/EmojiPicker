@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="6lw-4L-y3L" customClass="EmojiPickerViewController" customModule="EmojiPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cVV-5C-pcb">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-PD-n4R">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="160"/>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yPK-PD-n4R">
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="460"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="iDy-gK-PX0">
                                     <size key="itemSize" width="40" height="40"/>
@@ -30,16 +30,16 @@
                                 <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nns-bz-BcM" userLabel="Bottom Wrapper View">
-                                <rect key="frame" x="0.0" y="160" width="200" height="40"/>
+                                <rect key="frame" x="0.0" y="460" width="500" height="40"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5HQ-CH-ahy">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="40"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7mm-t1-myC">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="40"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rRN-At-htv" userLabel="Group Collection View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="500" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="d9O-os-XLF">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -61,7 +61,7 @@
                                         <blurEffect style="light"/>
                                     </visualEffectView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lVr-cX-ltW" userLabel="Top Line View">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="0.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="0.5"/>
                                         <color key="backgroundColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.29999999999999999" id="GJq-VQ-tfo"/>
@@ -95,7 +95,7 @@
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="200" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="200" height="200"/>
+                    <size key="freeformSize" width="500" height="500"/>
                     <connections>
                         <outlet property="bottomVisualEffectView" destination="5HQ-CH-ahy" id="mF9-jb-YUw"/>
                         <outlet property="emojisCollectionView" destination="yPK-PD-n4R" id="BAY-4e-MPA"/>

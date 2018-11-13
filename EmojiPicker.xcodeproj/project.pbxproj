@@ -30,6 +30,7 @@
 		33D716A2219A425B00599BDD /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716A1219A425B00599BDD /* Vibrator.swift */; };
 		33D716A4219A746C00599BDD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716A3219A746C00599BDD /* UIColor.swift */; };
 		33D716A7219A814400599BDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33D716A9219A814400599BDD /* Localizable.strings */; };
+		33D716B0219ACB6500599BDD /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716AF219ACB6500599BDD /* TagView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		33D716A3219A746C00599BDD /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		33D716A8219A814400599BDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33D716AA219A815000599BDD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		33D716AF219ACB6500599BDD /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				334EE9352199C464000404B8 /* UserDefaultsProtocol.swift */,
 				33D716A1219A425B00599BDD /* Vibrator.swift */,
+				33D716AF219ACB6500599BDD /* TagView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				3327619621999B9600433FD4 /* EmojiHeaderView.swift in Sources */,
 				33815606219981000059EF2F /* GroupHeaderView.swift in Sources */,
 				334EE9362199C464000404B8 /* UserDefaultsProtocol.swift in Sources */,
+				33D716B0219ACB6500599BDD /* TagView.swift in Sources */,
 				33D2B5172199094800D528EC /* EmojiPickerViewController.swift in Sources */,
 				337131B321993C1E00838035 /* EmojiCollectionViewCell.swift in Sources */,
 				337131AD21991D4900838035 /* EmojiPicker.swift in Sources */,

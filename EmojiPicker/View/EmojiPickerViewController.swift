@@ -70,6 +70,7 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
         modalPresentationStyle = .popover
         popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
         popoverPresentationController?.delegate = self
+        popoverPresentationController?.containerView?.clipsToBounds = false
     }
     
     public override func viewDidLoad() {
@@ -149,12 +150,16 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == emojisCollectionView {
-            guard let emoji = viewModel.emojis(at: indexPath)?.first else { return }
+            guard let emojis = viewModel.emojis(at: indexPath),
+                let emoji = emojis.first,
+                let cell = collectionView.cellForItem(at: indexPath) else { return }
             if isEmojiVibrationEnabled {
                 vibrator.vibrate()
             }
             delegate?.emojiPickerViewController(self, didSelect: emoji)
             viewModel.select(emoji: emoji)
+            let tagView = TagView.shared
+            tagView.show(sourceView: collectionView, sourceRect: cell.frame, emojis: emojis, emojiFontSize: emojiFontSize)
             if dismissAfterSelected {
                 dismiss(animated: true, completion: nil)
             } else {
