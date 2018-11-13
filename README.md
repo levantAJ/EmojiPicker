@@ -64,11 +64,6 @@ emojiPickerVC.emojiFontSize = 31
 emojiPickerVC.dismissAfterSelected = false
 ```
 
-- Settings vibration, default is `true`:
-```swift
-emojiPickerVC.isEmojiVibrationEnabled = true
-```
-
 - Apply dark mode, defautl is `false`
 ```swift
 emojiPickerVC.isDarkMode = false

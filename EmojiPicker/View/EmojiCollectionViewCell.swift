@@ -15,18 +15,16 @@ protocol EmojiCollectionViewCellDelegate: class {
 }
 
 final class EmojiCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var emojiButton: UIButton!
+    @IBOutlet weak var emojiLabel: UILabel!
     weak var delegate: EmojiCollectionViewCellDelegate?
     var emojis: [String]! {
         didSet {
-            UIView.performWithoutAnimation {
-                emojiButton.setTitle(emojis.first, for: .normal)
-            }
+            emojiLabel.text = emojis.first
         }
     }
     var emojiFontSize: CGFloat = 31 {
         didSet {
-            emojiButton.titleLabel?.font = UIFont.systemFont(ofSize: emojiFontSize)
+            emojiLabel.font = UIFont.systemFont(ofSize: emojiFontSize)
         }
     }
 }

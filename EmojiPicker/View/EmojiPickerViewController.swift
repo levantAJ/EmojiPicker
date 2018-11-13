@@ -54,7 +54,6 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
         }
     }
     public var dismissAfterSelected = false
-    public var isEmojiVibrationEnabled = false
     public weak var delegate: EmojiPickerViewControllerDelegate?
     
     @IBOutlet weak var emojisCollectionView: UICollectionView!
