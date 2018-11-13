@@ -56,6 +56,7 @@ extension EmojiPickerViewModel: EmojiPickerViewModelProtocol {
         }
         frequentlyUsedEmojis = [[emoji]] + frequentlyUsedEmojis
         frequentlyUsedEmojis = Array(frequentlyUsedEmojis.prefix(upTo: min(frequentlyUsedEmojis.count, 30)))
+        emojis[EmojiGroup.frequentlyUsed.index] = frequentlyUsedEmojis
         userDefaults.set(frequentlyUsedEmojis, forKey: Constant.EmojiPickerViewModel.frequentlyUsed)
     }
 }

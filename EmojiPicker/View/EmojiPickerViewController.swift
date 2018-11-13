@@ -152,6 +152,8 @@ extension EmojiPickerViewController: UICollectionViewDelegate, UICollectionViewD
             viewModel.select(emoji: emoji)
             if dismissAfterSelected {
                 dismiss(animated: true, completion: nil)
+            } else {
+                emojisCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }
     }
