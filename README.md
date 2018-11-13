@@ -2,9 +2,9 @@
   <img src="icon.png" title="PaddingLabel logo" width='444' float=left>
 </p>
 
-[![Pod Version](https://cocoapod-badges.herokuapp.com/v/PaddingLabel/badge.png)](http://cocoadocs.org/docsets/PaddingLabel/)
-[![Pod Platform](https://cocoapod-badges.herokuapp.com/p/PaddingLabel/badge.png)](http://cocoadocs.org/docsets/PaddingLabel/)
-[![Pod License](https://cocoapod-badges.herokuapp.com/l/PaddingLabel/badge.png)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Pod Version](https://cocoapod-badges.herokuapp.com/v/EmojiPicker/badge.png)](http://cocoadocs.org/docsets/EmojiPicker/)
+[![Pod Platform](https://cocoapod-badges.herokuapp.com/p/EmojiPicker/badge.png)](http://cocoadocs.org/docsets/EmojiPicker/)
+[![Pod License](https://cocoapod-badges.herokuapp.com/l/EmojiPicker/badge.png)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 # EmojiPicker
 This library to show a popover to pick emojis for iOS
