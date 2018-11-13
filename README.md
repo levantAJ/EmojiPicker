@@ -56,7 +56,7 @@ emojiPickerVC.preferredContentSize = CGSize(width: 300, height: 400)
 
 - Change Emojis font size, default is `31`:
 ```swift
-emojiPickerVC.emojiFontSize = 30
+emojiPickerVC.emojiFontSize = 31
 ```
 
 - Dismiss dismiss picker after select an emoji, default is `false`:
@@ -72,6 +72,16 @@ emojiPickerVC.isEmojiVibrationEnabled = true
 - Apply dark mode, defautl is `false`
 ```swift
 emojiPickerVC.isDarkMode = false
+```
+
+- Background color in light mode, used when `isDarkMode` is `false`, default is `UIColor.white.withAlphaComponent(0.5)`
+```swift
+emojiPickerVC.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+```
+
+- Background color in dark mode, used when `isDarkMode` is `true`, default is `UIColor.black.withAlphaComponent(0.5)`
+```swift
+emojiPickerVC.darkModeBackgroundColor = UIColor.white.withAlphaComponent(0.5)
 ```
 
 - Change language, default is `nil` as system language
