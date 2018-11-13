@@ -21,6 +21,21 @@ This library to show a popover to pick emojis for iOS
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
+## Installation
+There is a way to use EmojiPicker in your project:
+
+- using CocoaPods
+
+### Installation with CocoaPods
+
+```
+pod 'EmojiPicker', '1.0'
+```
+### Build Project
+
+At this point your workspace should build without error. If you are having problem, post to the Issue and the
+community can help you solve it.
+
 ## How To Use
 
 ```swift
@@ -65,22 +80,6 @@ emojiPickerVC.isDarkMode = false
 ```swift
 emojiPickerVC.language = "en"
 ```
-
-
-## Installation
-There is a way to use EmojiPicker in your project:
-
-- using CocoaPods
-
-### Installation with CocoaPods
-
-```
-pod 'EmojiPicker', '1.0'
-```
-### Build Project
-
-At this point your workspace should build without error. If you are having problem, post to the Issue and the
-community can help you solve it.
 
 ## Author
 - [Tai Le](https://github.com/levantAJ)
