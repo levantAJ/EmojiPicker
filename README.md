@@ -10,16 +10,10 @@
 This library to show a popover to pick emojis for iOS
 
 
-
 ## Requirements
 
 - iOS 9.0 or later
 - Xcode 9.0 or later
-
-## Communication
-- If you **found a bug**, open an issue.
-- If you **have a feature request**, open an issue.
-- If you **want to contribute**, submit a pull request.
 
 ## Installation
 There is a way to use EmojiPicker in your project:
@@ -83,6 +77,11 @@ emojiPickerVC.language = "en"
 
 ## Author
 - [Tai Le](https://github.com/levantAJ)
+
+## Communication
+- If you **found a bug**, open an issue.
+- If you **have a feature request**, open an issue.
+- If you **want to contribute**, submit a pull request.
 
 ## Licenses
 
