@@ -40,9 +40,7 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
     }
     public var isDarkMode = false {
         didSet {
-            backgroundColor = isDarkMode ? .black : .clear
-            bottomVisualEffectView?.effect = UIBlurEffect(style: isDarkMode ? .dark : .light)
-            groupTopLineView.backgroundColor = UIColor(hexString: isDarkMode ? "#3d3d3d" : "#9d9d9d")?.withAlphaComponent(0.3)
+            changeDarkModeStyle()
         }
     }
     public var dismissAfterSelected = false
@@ -202,6 +200,13 @@ extension EmojiPickerViewController {
         layout = groupsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.headerReferenceSize = CGSize(width: 0, height: 0)
         
+        changeDarkModeStyle()
+    }
+    
+    private func changeDarkModeStyle() {
+        backgroundColor = isDarkMode ? .black : .clear
+        bottomVisualEffectView?.effect = UIBlurEffect(style: isDarkMode ? .dark : .light)
+        groupTopLineView?.backgroundColor = UIColor(hexString: isDarkMode ? "#3d3d3d" : "#9d9d9d")?.withAlphaComponent(0.3)
     }
     
     private func selectCurrentGroupCell() {
