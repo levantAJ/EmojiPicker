@@ -75,6 +75,19 @@ extension TagView {
     }
     
     private func setupView(for emojis: [String], sourceRect: CGRect, emojiFontSize: CGFloat, isDarkMode: Bool) {
+        multipleEmojisDefaultButton.setTitle(emojis[0], for: .normal)
+        multipleEmojisDefaultButton.titleLabel?.font = UIFont.systemFont(ofSize: emojiFontSize)
+        multipleEmojisWhiteButton.setTitle(emojis[1], for: .normal)
+        multipleEmojisWhiteButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisYellowButton.setTitle(emojis[2], for: .normal)
+        multipleEmojisYellowButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisLightButton.setTitle(emojis[3], for: .normal)
+        multipleEmojisLightButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisDarkButton.setTitle(emojis[4], for: .normal)
+        multipleEmojisDarkButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisBlackButton.setTitle(emojis[5], for: .normal)
+        multipleEmojisBlackButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        
         let image = UIImage(named: isDarkMode ? "darkEmojiTag" : "lightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
         let width = Constant.EmojiCollectionViewCell.size.width + 37
         frame.size.height = width * image.size.height / image.size.width
@@ -96,19 +109,6 @@ extension TagView {
         let centerImage = UIImage(named: isDarkMode ? "centerDarkEmojiTag" : "centerLightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
         multipleEmojisCenterLeftImageView.image = centerImage
         multipleEmojisCenterRightImageView.image = centerImage
-        
-        multipleEmojisDefaultButton.setTitle(emojis[0], for: .normal)
-        multipleEmojisDefaultButton.titleLabel?.font = UIFont.systemFont(ofSize: emojiFontSize)
-        multipleEmojisWhiteButton.setTitle(emojis[1], for: .normal)
-        multipleEmojisWhiteButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
-        multipleEmojisYellowButton.setTitle(emojis[2], for: .normal)
-        multipleEmojisYellowButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
-        multipleEmojisLightButton.setTitle(emojis[3], for: .normal)
-        multipleEmojisLightButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
-        multipleEmojisDarkButton.setTitle(emojis[4], for: .normal)
-        multipleEmojisDarkButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
-        multipleEmojisBlackButton.setTitle(emojis[5], for: .normal)
-        multipleEmojisBlackButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
 
     }
 }
