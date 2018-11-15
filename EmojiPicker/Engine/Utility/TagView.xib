@@ -68,39 +68,39 @@
                             <rect key="frame" x="24.5" y="0.0" width="228" height="161"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kO5-sD-k4Q" userLabel="Default Emoji Button">
-                                    <rect key="frame" x="0.0" y="8" width="34" height="47"/>
+                                    <rect key="frame" x="0.0" y="7" width="34" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶"/>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-50-OGL" userLabel="Separate View">
-                                    <rect key="frame" x="42" y="12" width="0.5" height="39"/>
-                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <rect key="frame" x="42" y="19" width="0.5" height="23"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="0.5" id="MB5-Xm-xjA"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mb-Pn-BF8" userLabel="White Emoji Button">
-                                    <rect key="frame" x="50.5" y="8" width="34" height="47"/>
+                                    <rect key="frame" x="50.5" y="7" width="34" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏻"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoG-uI-GHK" userLabel="Yellow Emoji Button">
-                                    <rect key="frame" x="86.5" y="8" width="34" height="47"/>
+                                    <rect key="frame" x="86.5" y="7" width="34" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏼"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-MI-b54" userLabel="Light Emoji Button">
-                                    <rect key="frame" x="122.5" y="8" width="33.5" height="47"/>
+                                    <rect key="frame" x="122.5" y="7" width="33.5" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏽"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHm-86-9vO" userLabel="Dark Emoji Button">
-                                    <rect key="frame" x="158" y="8" width="34" height="47"/>
+                                    <rect key="frame" x="158" y="7" width="34" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏾"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfO-dx-zZ3" userLabel="Black Emoji Button">
-                                    <rect key="frame" x="194" y="8" width="34" height="47"/>
+                                    <rect key="frame" x="194" y="7" width="34" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏿"/>
                                 </button>
@@ -114,11 +114,11 @@
                                 <constraint firstItem="xoG-uI-GHK" firstAttribute="leading" secondItem="9mb-Pn-BF8" secondAttribute="trailing" constant="2" id="PN4-7v-06p"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="bottom" secondItem="kO5-sD-k4Q" secondAttribute="bottom" id="QCr-fZ-1dL"/>
                                 <constraint firstItem="xoG-uI-GHK" firstAttribute="top" secondItem="9mb-Pn-BF8" secondAttribute="top" id="RTa-Rc-cAW"/>
-                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="top" secondItem="LX6-7h-JVn" secondAttribute="top" constant="8" id="UQP-Sy-Vim"/>
+                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="top" secondItem="LX6-7h-JVn" secondAttribute="top" constant="7" id="UQP-Sy-Vim"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="width" id="X5v-B7-PaE"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" id="Zkk-4x-GcP"/>
                                 <constraint firstAttribute="trailing" secondItem="dfO-dx-zZ3" secondAttribute="trailing" id="bA2-1L-DEz"/>
-                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="bottom" secondItem="GVm-50-OGL" secondAttribute="bottom" constant="4" id="bdi-Gr-ej2"/>
+                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="bottom" secondItem="GVm-50-OGL" secondAttribute="bottom" constant="12" id="bdi-Gr-ej2"/>
                                 <constraint firstItem="7vi-MI-b54" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" id="c9n-mm-cVW"/>
                                 <constraint firstItem="xHm-86-9vO" firstAttribute="bottom" secondItem="kO5-sD-k4Q" secondAttribute="bottom" id="cqa-lD-pMM"/>
                                 <constraint firstItem="7vi-MI-b54" firstAttribute="leading" secondItem="xoG-uI-GHK" secondAttribute="trailing" constant="2" id="e9B-LX-B3k"/>
@@ -126,7 +126,7 @@
                                 <constraint firstItem="kO5-sD-k4Q" firstAttribute="leading" secondItem="LX6-7h-JVn" secondAttribute="leading" id="geF-JY-WlY"/>
                                 <constraint firstItem="9mb-Pn-BF8" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" id="kH8-Pa-2pd"/>
                                 <constraint firstItem="GVm-50-OGL" firstAttribute="leading" secondItem="kO5-sD-k4Q" secondAttribute="trailing" constant="8" id="oz9-C6-Vl3"/>
-                                <constraint firstItem="GVm-50-OGL" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" constant="4" id="pmf-KX-Rcc"/>
+                                <constraint firstItem="GVm-50-OGL" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" constant="12" id="pmf-KX-Rcc"/>
                                 <constraint firstItem="xHm-86-9vO" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" id="q4L-MZ-3ms"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="leading" secondItem="xHm-86-9vO" secondAttribute="trailing" constant="2" id="rz6-lV-NyV"/>
                                 <constraint firstItem="xHm-86-9vO" firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="width" id="s4T-iI-KaQ"/>

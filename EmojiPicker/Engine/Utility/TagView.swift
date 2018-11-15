@@ -81,6 +81,8 @@ extension TagView {
         frame.size.width = (emojiFontSize + 4) * CGFloat(emojis.count) + multipleEmojisLeftImageView.frame.width + multipleEmojisRightImageView.frame.width + 26.2
         frame.origin.x = sourceRect.midX - frame.width/2
         frame.origin.y = sourceRect.minY - frame.height + sourceRect.height + 9
+        layoutIfNeeded()
+        multipleEmojisAnchorImageViewLeadingConstraint.constant = sourceRect.midX - frame.origin.x - multipleEmojisAnchorImageView.frame.width / 2
         
         let anchorImage = UIImage(named: isDarkMode ? "anchorDarkEmojiTag" : "anchorLightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
         multipleEmojisAnchorImageView.image = anchorImage
