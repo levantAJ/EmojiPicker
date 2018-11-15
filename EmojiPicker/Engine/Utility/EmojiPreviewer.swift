@@ -41,6 +41,14 @@ final class EmojiPreviewer: UIView {
         view.layer.zPosition = CGFloat(Float.greatestFiniteMagnitude)
         return view
     }()
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        if view == multipleEmojisAnchorImageView {
+            return nil
+        }
+        return view
+    }
 }
 
 // MARK: - EmojiPreviewable
@@ -65,7 +73,7 @@ extension EmojiPreviewer: EmojiPreviewable {
     }
     
     func hide() {
-//        removeFromSuperview()
+        removeFromSuperview()
     }
 }
 
@@ -109,7 +117,7 @@ extension EmojiPreviewer {
         if frame.minX <= 0 {
             factor = abs(frame.minX)
         } else if frame.maxX >= sourceView.frame.width {
-            factor = sourceView.frame.width - frame.maxX + 1
+            factor = sourceView.frame.width - frame.maxX
         }
         frame.origin.x = frame.origin.x + factor
         multipleEmojisAnchorImageViewLeadingConstraint.constant = multipleEmojisAnchorImageViewLeadingConstraint.constant - factor
