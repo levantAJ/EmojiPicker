@@ -10,8 +10,6 @@
 		3303BE90219C417900B38800 /* EmojiPreviewer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3303BE8F219C417900B38800 /* EmojiPreviewer.xib */; };
 		3303BE92219D49E700B38800 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3303BE91219D49E700B38800 /* UIButton.swift */; };
 		3303BE94219D4B7E00B38800 /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3303BE93219D4B7E00B38800 /* EmojiPickerViewController.swift */; };
-		3303BE96219D5E3600B38800 /* EmojiPreviewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3303BE95219D5E3600B38800 /* EmojiPreviewer.storyboard */; };
-		3303BE9B219D5E9700B38800 /* EmojiPreivewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3303BE9A219D5E9700B38800 /* EmojiPreivewViewController.swift */; };
 		3303BE9D219D5F4300B38800 /* EmojiPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3303BE9C219D5F4300B38800 /* EmojiPopover.storyboard */; };
 		3327619621999B9600433FD4 /* EmojiHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3327619521999B9600433FD4 /* EmojiHeaderView.swift */; };
 		3327619821999BA100433FD4 /* EmojiHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3327619721999BA000433FD4 /* EmojiHeaderView.xib */; };
@@ -53,8 +51,6 @@
 		3303BE8F219C417900B38800 /* EmojiPreviewer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiPreviewer.xib; sourceTree = "<group>"; };
 		3303BE91219D49E700B38800 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		3303BE93219D4B7E00B38800 /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
-		3303BE95219D5E3600B38800 /* EmojiPreviewer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmojiPreviewer.storyboard; sourceTree = "<group>"; };
-		3303BE9A219D5E9700B38800 /* EmojiPreivewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPreivewViewController.swift; sourceTree = "<group>"; };
 		3303BE9C219D5F4300B38800 /* EmojiPopover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmojiPopover.storyboard; sourceTree = "<group>"; };
 		3327619521999B9600433FD4 /* EmojiHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiHeaderView.swift; sourceTree = "<group>"; };
 		3327619721999BA000433FD4 /* EmojiHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiHeaderView.xib; sourceTree = "<group>"; };
@@ -127,14 +123,6 @@
 				3303BE93219D4B7E00B38800 /* EmojiPickerViewController.swift */,
 			);
 			path = EmojiPicker;
-			sourceTree = "<group>";
-		};
-		3303BE99219D5E8200B38800 /* EmojiPreivewer */ = {
-			isa = PBXGroup;
-			children = (
-				3303BE9A219D5E9700B38800 /* EmojiPreivewViewController.swift */,
-			);
-			path = EmojiPreivewer;
 			sourceTree = "<group>";
 		};
 		334EE9332199C446000404B8 /* Engine */ = {
@@ -240,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				33D2B513219908DC00D528EC /* EmojiPicker.storyboard */,
-				3303BE95219D5E3600B38800 /* EmojiPreviewer.storyboard */,
 				3303BE9C219D5F4300B38800 /* EmojiPopover.storyboard */,
 			);
 			path = Storyboard;
@@ -251,7 +238,6 @@
 			children = (
 				3303BE98219D5E5E00B38800 /* EmojiPicker */,
 				3303BE97219D5E5500B38800 /* EmojiPopover */,
-				3303BE99219D5E8200B38800 /* EmojiPreivewer */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -351,7 +337,6 @@
 			files = (
 				33D2B514219908DC00D528EC /* EmojiPicker.storyboard in Resources */,
 				33815604219975C30059EF2F /* GroupCollectionViewCell.xib in Resources */,
-				3303BE96219D5E3600B38800 /* EmojiPreviewer.storyboard in Resources */,
 				3303BE9D219D5F4300B38800 /* EmojiPopover.storyboard in Resources */,
 				337131C121995CFC00838035 /* emojis.json in Resources */,
 				33815600219973DE0059EF2F /* Assets.xcassets in Resources */,
@@ -377,7 +362,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3303BE9B219D5E9700B38800 /* EmojiPreivewViewController.swift in Sources */,
 				33815603219975C30059EF2F /* GroupCollectionViewCell.swift in Sources */,
 				33D716A4219A746C00599BDD /* UIColor.swift in Sources */,
 				338155FC21995DCB0059EF2F /* Emoji.swift in Sources */,

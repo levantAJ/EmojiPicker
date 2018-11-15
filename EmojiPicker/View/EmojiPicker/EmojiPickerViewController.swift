@@ -13,7 +13,6 @@ public protocol EmojiPickerViewControllerDelegate: class {
 }
 
 open class EmojiPickerViewController: UIViewController {
-    open var window: UIWindow?
     open var sourceRect: CGRect = .zero
     open var permittedArrowDirections: UIPopoverArrowDirection = .any
     open var emojiFontSize: CGFloat = 29
@@ -46,7 +45,7 @@ open class EmojiPickerViewController: UIViewController {
 
 extension EmojiPickerViewController: EmojiPickerContentViewControllerDelegate {
     func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emojis: [String], sourceView: UIView) {
-        emojiPreviewer.show(sourceView: window, sourceRect: sourceView.convert(sourceView.bounds, to: view), emojis: emojis, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+        emojiPreviewer.show(sourceView: view.window, sourceRect: sourceView.convert(sourceView.bounds, to: view), emojis: emojis, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
     }
 
     func emojiPickerViewControllerHideEmojiPreviewer(_ controller: EmojiPopoverViewController) {

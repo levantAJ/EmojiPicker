@@ -15,10 +15,12 @@ protocol EmojiPreviewable {
 
 final class EmojiPreviewer: UIView {
     @IBOutlet weak var singleEmojiWrapperView: UIView!
+    @IBOutlet weak var singleEmojiWrapperViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var singleEmojiImageView: UIImageView!
     @IBOutlet weak var singleEmojiLabel: UILabel!
     
     @IBOutlet weak var multipleEmojisWrapperView: UIView!
+    @IBOutlet weak var multipleEmojisWrapperViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var multipleEmojisLeftImageView: UIImageView!
     @IBOutlet weak var multipleEmojisCenterLeftImageView: UIImageView!
     @IBOutlet weak var multipleEmojisAnchorImageView: UIImageView!
@@ -41,15 +43,21 @@ final class EmojiPreviewer: UIView {
     }()
 }
 
-// MARK: - TagViewProtocol
+// MARK: - EmojiPreviewable
 
 extension EmojiPreviewer: EmojiPreviewable {
     func show(sourceView: UIView?, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool) {
-        singleEmojiWrapperView.isHidden = emojis.count != 1
-        multipleEmojisWrapperView.isHidden = !singleEmojiWrapperView.isHidden
         if emojis.count == 1 {
+            singleEmojiWrapperView.isHidden = false
+            multipleEmojisWrapperView.isHidden = true
+            singleEmojiWrapperViewTrailingConstraint.priority = UILayoutPriority(rawValue: 999)
+            multipleEmojisWrapperViewTrailingConstraint.priority = UILayoutPriority(rawValue: 1)
             setupView(for: emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
         } else if emojis.count == 6 {
+            singleEmojiWrapperView.isHidden = true
+            multipleEmojisWrapperView.isHidden = false
+            singleEmojiWrapperViewTrailingConstraint.priority = UILayoutPriority(rawValue: 1)
+            multipleEmojisWrapperViewTrailingConstraint.priority = UILayoutPriority(rawValue: 999)
             setupView(for: emojis, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
         }
     
