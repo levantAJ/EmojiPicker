@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3303BE90219C417900B38800 /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3303BE8F219C417900B38800 /* TagView.xib */; };
+		3303BE90219C417900B38800 /* EmojiPreviewer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3303BE8F219C417900B38800 /* EmojiPreviewer.xib */; };
 		3303BE92219D49E700B38800 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3303BE91219D49E700B38800 /* UIButton.swift */; };
 		3303BE94219D4B7E00B38800 /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3303BE93219D4B7E00B38800 /* EmojiPickerViewController.swift */; };
 		3303BE96219D5E3600B38800 /* EmojiPreviewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3303BE95219D5E3600B38800 /* EmojiPreviewer.storyboard */; };
@@ -36,7 +36,7 @@
 		33D716A2219A425B00599BDD /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716A1219A425B00599BDD /* Vibrator.swift */; };
 		33D716A4219A746C00599BDD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716A3219A746C00599BDD /* UIColor.swift */; };
 		33D716A7219A814400599BDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33D716A9219A814400599BDD /* Localizable.strings */; };
-		33D716B0219ACB6500599BDD /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716AF219ACB6500599BDD /* TagView.swift */; };
+		33D716B0219ACB6500599BDD /* EmojiPreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716AF219ACB6500599BDD /* EmojiPreviewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3303BE8F219C417900B38800 /* TagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagView.xib; sourceTree = "<group>"; };
+		3303BE8F219C417900B38800 /* EmojiPreviewer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiPreviewer.xib; sourceTree = "<group>"; };
 		3303BE91219D49E700B38800 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		3303BE93219D4B7E00B38800 /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
 		3303BE95219D5E3600B38800 /* EmojiPreviewer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmojiPreviewer.storyboard; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		33D716A3219A746C00599BDD /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		33D716A8219A814400599BDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33D716AA219A815000599BDD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		33D716AF219ACB6500599BDD /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		33D716AF219ACB6500599BDD /* EmojiPreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPreviewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +151,8 @@
 			children = (
 				334EE9352199C464000404B8 /* UserDefaultsProtocol.swift */,
 				33D716A1219A425B00599BDD /* Vibrator.swift */,
-				33D716AF219ACB6500599BDD /* TagView.swift */,
-				3303BE8F219C417900B38800 /* TagView.xib */,
+				33D716AF219ACB6500599BDD /* EmojiPreviewer.swift */,
+				3303BE8F219C417900B38800 /* EmojiPreviewer.xib */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -355,7 +355,7 @@
 				3303BE9D219D5F4300B38800 /* EmojiPopover.storyboard in Resources */,
 				337131C121995CFC00838035 /* emojis.json in Resources */,
 				33815600219973DE0059EF2F /* Assets.xcassets in Resources */,
-				3303BE90219C417900B38800 /* TagView.xib in Resources */,
+				3303BE90219C417900B38800 /* EmojiPreviewer.xib in Resources */,
 				3327619821999BA100433FD4 /* EmojiHeaderView.xib in Resources */,
 				33D716A7219A814400599BDD /* Localizable.strings in Resources */,
 				337131B92199487B00838035 /* EmojiCollectionViewCell.xib in Resources */,
@@ -386,7 +386,7 @@
 				33815606219981000059EF2F /* GroupHeaderView.swift in Sources */,
 				334EE9362199C464000404B8 /* UserDefaultsProtocol.swift in Sources */,
 				3303BE92219D49E700B38800 /* UIButton.swift in Sources */,
-				33D716B0219ACB6500599BDD /* TagView.swift in Sources */,
+				33D716B0219ACB6500599BDD /* EmojiPreviewer.swift in Sources */,
 				33D2B5172199094800D528EC /* EmojiPopoverViewController.swift in Sources */,
 				337131B321993C1E00838035 /* EmojiCollectionViewCell.swift in Sources */,
 				337131AD21991D4900838035 /* EmojiPicker.swift in Sources */,
@@ -555,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -582,6 +583,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

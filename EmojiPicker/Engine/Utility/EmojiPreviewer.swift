@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool)
+    func show(sourceView: UIView?, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool)
     func hide()
 }
 
@@ -33,7 +33,7 @@ final class EmojiPreviewer: UIView {
     @IBOutlet weak var multipleEmojisBlackButton: UIButton!
     
     static let shared: EmojiPreviewer = {
-        let nib = UINib(nibName: "TagView", bundle: Bundle(for: EmojiPreviewer.self))
+        let nib = UINib(nibName: "EmojiPreviewer", bundle: Bundle(for: EmojiPreviewer.self))
         let view = nib.instantiate(withOwner: nil, options: nil)[0] as! EmojiPreviewer
         view.backgroundColor = .clear
         view.layer.zPosition = CGFloat(Float.greatestFiniteMagnitude)
@@ -44,7 +44,7 @@ final class EmojiPreviewer: UIView {
 // MARK: - TagViewProtocol
 
 extension EmojiPreviewer: EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool) {
+    func show(sourceView: UIView?, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool) {
         singleEmojiWrapperView.isHidden = emojis.count != 1
         multipleEmojisWrapperView.isHidden = !singleEmojiWrapperView.isHidden
         if emojis.count == 1 {
@@ -52,7 +52,8 @@ extension EmojiPreviewer: EmojiPreviewable {
         } else if emojis.count == 6 {
             setupView(for: emojis, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
         }
-        sourceView.addSubview(self)
+    
+        sourceView?.addSubview(self)
     }
     
     func hide() {
