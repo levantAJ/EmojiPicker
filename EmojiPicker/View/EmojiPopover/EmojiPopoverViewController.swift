@@ -178,13 +178,12 @@ extension EmojiPopoverViewController {
 // MARK: - GroupCollectionViewCellDelegate
 
 extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emojis: [String]) {
-        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emojis, sourceView: cell)
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emoji: String) {
+        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: [emoji], sourceView: cell)
     }
     
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emojis: [String]) {
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emoji: String) {
         delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
-        guard let emoji = emojis.first else { return }
         delegate?.emojiPickerViewController(self, didSelect: emoji)
         viewModel.select(emoji: emoji)
         if dismissAfterSelected {
@@ -197,8 +196,12 @@ extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
         }
     }
     
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpOutside emojis: [String]) {
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpOutside emoji: String) {
         delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
+    }
+    
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, longPress emojis: [String]) {
+        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emojis, sourceView: cell)
     }
 }
 

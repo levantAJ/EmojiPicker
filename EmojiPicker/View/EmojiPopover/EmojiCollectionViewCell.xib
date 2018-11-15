@@ -19,14 +19,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l37-Fv-7e6" userLabel="Emoji Label">
-                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJl-as-Zpy" userLabel="Emoji Button">
                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                        <gestureRecognizers/>
                         <fontDescription key="fontDescription" type="system" pointSize="31"/>
                         <connections>
                             <action selector="emojiButtonTouchDown:" destination="Gh2-jq-Thm" eventType="touchDown" id="ixZ-yd-39W"/>
@@ -39,17 +34,13 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="mJl-as-Zpy" secondAttribute="bottom" id="3o3-jZ-W99"/>
                 <constraint firstItem="mJl-as-Zpy" firstAttribute="leading" secondItem="Gh2-jq-Thm" secondAttribute="leading" id="Mym-Id-DJr"/>
-                <constraint firstAttribute="trailing" secondItem="l37-Fv-7e6" secondAttribute="trailing" id="VtA-OF-8Nm"/>
-                <constraint firstItem="l37-Fv-7e6" firstAttribute="top" secondItem="Gh2-jq-Thm" secondAttribute="top" id="X5E-uy-w18"/>
-                <constraint firstItem="l37-Fv-7e6" firstAttribute="leading" secondItem="Gh2-jq-Thm" secondAttribute="leading" id="bod-Wa-pLo"/>
                 <constraint firstItem="mJl-as-Zpy" firstAttribute="top" secondItem="Gh2-jq-Thm" secondAttribute="top" id="o6v-To-028"/>
-                <constraint firstAttribute="bottom" secondItem="l37-Fv-7e6" secondAttribute="bottom" id="v9A-kJ-xYP"/>
                 <constraint firstAttribute="trailing" secondItem="mJl-as-Zpy" secondAttribute="trailing" id="vN9-fT-oBs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Xnd-EH-4hE"/>
             <size key="customSize" width="44" height="44"/>
             <connections>
-                <outlet property="emojiLabel" destination="l37-Fv-7e6" id="zUD-5Z-Yw4"/>
+                <outlet property="emojiButton" destination="mJl-as-Zpy" id="niW-MQ-RNj"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="153.82308845577214"/>
         </collectionViewCell>
