@@ -9,18 +9,18 @@
 import UIKit
 
 protocol EmojiPreviewable {
-    func show(sourceView: UIView?, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool)
+    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool)
     func hide()
 }
 
 final class EmojiPreviewer: UIView {
     @IBOutlet weak var singleEmojiWrapperView: UIView!
-    @IBOutlet weak var singleEmojiWrapperViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet var singleEmojiWrapperViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var singleEmojiImageView: UIImageView!
     @IBOutlet weak var singleEmojiLabel: UILabel!
     
     @IBOutlet weak var multipleEmojisWrapperView: UIView!
-    @IBOutlet weak var multipleEmojisWrapperViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet var multipleEmojisWrapperViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var multipleEmojisLeftImageView: UIImageView!
     @IBOutlet weak var multipleEmojisCenterLeftImageView: UIImageView!
     @IBOutlet weak var multipleEmojisAnchorImageView: UIImageView!
@@ -46,22 +46,22 @@ final class EmojiPreviewer: UIView {
 // MARK: - EmojiPreviewable
 
 extension EmojiPreviewer: EmojiPreviewable {
-    func show(sourceView: UIView?, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool) {
+    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool) {
         if emojis.count == 1 {
             singleEmojiWrapperView.isHidden = false
             multipleEmojisWrapperView.isHidden = true
-            singleEmojiWrapperViewTrailingConstraint.priority = UILayoutPriority(rawValue: 999)
-            multipleEmojisWrapperViewTrailingConstraint.priority = UILayoutPriority(rawValue: 1)
+            singleEmojiWrapperViewTrailingConstraint.isActive = true
+            multipleEmojisWrapperViewTrailingConstraint.isActive = false
             setupView(for: emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
         } else if emojis.count == 6 {
             singleEmojiWrapperView.isHidden = true
             multipleEmojisWrapperView.isHidden = false
-            singleEmojiWrapperViewTrailingConstraint.priority = UILayoutPriority(rawValue: 1)
-            multipleEmojisWrapperViewTrailingConstraint.priority = UILayoutPriority(rawValue: 999)
-            setupView(for: emojis, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+            singleEmojiWrapperViewTrailingConstraint.isActive = false
+            multipleEmojisWrapperViewTrailingConstraint.isActive = true
+            setupView(for: emojis, sourceView: sourceView, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
         }
     
-        sourceView?.addSubview(self)
+        sourceView.addSubview(self)
     }
     
     func hide() {
@@ -83,7 +83,7 @@ extension EmojiPreviewer {
         singleEmojiLabel.font = UIFont.systemFont(ofSize: emojiFontSize)
     }
     
-    private func setupView(for emojis: [String], sourceRect: CGRect, emojiFontSize: CGFloat, isDarkMode: Bool) {
+    private func setupView(for emojis: [String], sourceView: UIView, sourceRect: CGRect, emojiFontSize: CGFloat, isDarkMode: Bool) {
         multipleEmojisDefaultButton.titleLabel?.font = UIFont.systemFont(ofSize: emojiFontSize)
         multipleEmojisWhiteButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
         multipleEmojisYellowButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
@@ -105,6 +105,14 @@ extension EmojiPreviewer {
         frame.origin.y = sourceRect.minY - frame.height + sourceRect.height + 9
         layoutIfNeeded()
         multipleEmojisAnchorImageViewLeadingConstraint.constant = sourceRect.midX - frame.origin.x - multipleEmojisAnchorImageView.frame.width / 2
+        var factor: CGFloat = 0
+        if frame.minX <= 0 {
+            factor = abs(frame.minX)
+        } else if frame.maxX >= sourceView.frame.width {
+            factor = sourceView.frame.width - frame.maxX + 1
+        }
+        frame.origin.x = frame.origin.x + factor
+        multipleEmojisAnchorImageViewLeadingConstraint.constant = multipleEmojisAnchorImageViewLeadingConstraint.constant - factor
         
         let anchorImage = UIImage(named: isDarkMode ? "anchorDarkEmojiTag" : "anchorLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         multipleEmojisAnchorImageView.image = anchorImage
