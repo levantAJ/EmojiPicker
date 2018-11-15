@@ -65,7 +65,7 @@ final class EmojiPopoverViewController: UIViewController {
     @IBOutlet weak var groupTopLineView: UIView!
     var selectedGroupCell: GroupCollectionViewCell?
     lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel(userDefaults: UserDefaults.standard)
-    lazy var vibrator: Vibrating = Vibrator()
+    lazy var vibrator: Vibratable = Vibrator()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -184,7 +184,6 @@ extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emoji: String) {
         delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
-        delegate?.emojiPickerViewController(self, didSelect: emoji)
         viewModel.select(emoji: emoji)
         if dismissAfterSelected {
             dismiss(animated: true) { [weak self] in
@@ -201,6 +200,7 @@ extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
     }
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, longPress emojis: [String]) {
+        vibrator.vibrate()
         delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emojis, sourceView: cell)
     }
 }

@@ -51,6 +51,7 @@ extension EmojiCollectionViewCell {
     }
     
     @objc private func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        guard emojis.count > 1 else { return }
         delegate?.emojiCollectionViewCell(self, longPress: emojis)
     }
 

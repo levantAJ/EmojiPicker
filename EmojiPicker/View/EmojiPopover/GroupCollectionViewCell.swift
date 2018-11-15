@@ -16,7 +16,7 @@ final class GroupCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var groupButton: UIButton!
     var indexPath: IndexPath!
     weak var delegate: GroupCollectionViewCellDelegate?
-    lazy var vibrator: Vibrating = Vibrator()
+    lazy var vibrator: Vibratable = Vibrator()
     
     var image: UIImage? {
         didSet {

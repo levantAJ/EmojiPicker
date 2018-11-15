@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool)
+    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?)
     func hide()
 }
 
@@ -34,6 +34,9 @@ final class EmojiPreviewer: UIView {
     @IBOutlet weak var multipleEmojisDarkButton: UIButton!
     @IBOutlet weak var multipleEmojisBlackButton: UIButton!
     var selectedButton: UIButton?
+    lazy var vibrator: Vibratable = Vibrator()
+    var emojis: [String] = []
+    var completion: ((String) -> Void)?
     
     static let shared: EmojiPreviewer = {
         let nib = UINib(nibName: "EmojiPreviewer", bundle: Bundle(for: EmojiPreviewer.self))
@@ -47,16 +50,17 @@ final class EmojiPreviewer: UIView {
 // MARK: - EmojiPreviewable
 
 extension EmojiPreviewer: EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool) {
+    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?) {
+        self.emojis = emojis
+        self.completion = completion
         if emojis.count == 1 {
             singleEmojiWrapperView.isHidden = false
             multipleEmojisWrapperView.isHidden = true
             singleEmojiWrapperViewTrailingConstraint.isActive = true
             multipleEmojisWrapperViewTrailingConstraint.isActive = false
             setupView(for: emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+            completion?(emojis[0])
         } else if emojis.count == 6 {
-            multipleEmojisDefaultButton.backgroundColor = multipleEmojisDefaultButton.tintColor
-            selectedButton = multipleEmojisDefaultButton
             singleEmojiWrapperView.isHidden = true
             multipleEmojisWrapperView.isHidden = false
             multipleEmojisWrapperViewTrailingConstraint.isActive = true
@@ -77,9 +81,26 @@ extension EmojiPreviewer: EmojiPreviewable {
 extension EmojiPreviewer {
     @IBAction func multipleEmojisButtonTapped(_ button: UIButton) {
         guard button != selectedButton else { return }
+        vibrator.vibrate()
         selectedButton?.backgroundColor = .clear
         button.backgroundColor = button.tintColor
         selectedButton = button
+        switch button {
+        case multipleEmojisDefaultButton:
+            completion?(emojis[0])
+        case multipleEmojisWhiteButton:
+            completion?(emojis[1])
+        case multipleEmojisYellowButton:
+            completion?(emojis[2])
+        case multipleEmojisLightButton:
+            completion?(emojis[3])
+        case multipleEmojisDarkButton:
+            completion?(emojis[4])
+        case multipleEmojisBlackButton:
+            completion?(emojis[5])
+        default:
+            return
+        }
     }
 }
 
@@ -99,11 +120,18 @@ extension EmojiPreviewer {
     
     private func setupView(for emojis: [String], sourceView: UIView, sourceRect: CGRect, emojiFontSize: CGFloat, isDarkMode: Bool) {
         multipleEmojisDefaultButton.titleLabel?.font = UIFont.systemFont(ofSize: emojiFontSize)
+        multipleEmojisDefaultButton.backgroundColor = multipleEmojisDefaultButton.tintColor
+        selectedButton = multipleEmojisDefaultButton
         multipleEmojisWhiteButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisWhiteButton.backgroundColor = .clear
         multipleEmojisYellowButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisYellowButton.backgroundColor = .clear
         multipleEmojisLightButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisLightButton.backgroundColor = .clear
         multipleEmojisDarkButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisDarkButton.backgroundColor = .clear
         multipleEmojisBlackButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
+        multipleEmojisBlackButton.backgroundColor = .clear
         multipleEmojisDefaultButton.setTitle(emojis[0], for: .normal, animated: false)
         multipleEmojisWhiteButton.setTitle(emojis[1], for: .normal, animated: false)
         multipleEmojisYellowButton.setTitle(emojis[2], for: .normal, animated: false)
