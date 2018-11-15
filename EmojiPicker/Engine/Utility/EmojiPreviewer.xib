@@ -68,7 +68,10 @@
                             <rect key="frame" x="24.5" y="0.0" width="245" height="161"/>
                             <subviews>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kO5-sD-k4Q" userLabel="Default Emoji Button">
-                                    <rect key="frame" x="0.0" y="9" width="36.5" height="47"/>
+                                    <rect key="frame" x="0.0" y="14" width="36.5" height="40.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="height" multiplier="1:1.1" id="n2C-AQ-RbI"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶"/>
                                     <userDefinedRuntimeAttributes>
@@ -81,7 +84,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-50-OGL" userLabel="Separate View">
-                                    <rect key="frame" x="44.5" y="22.5" width="0.5" height="22"/>
+                                    <rect key="frame" x="44.5" y="24.5" width="0.5" height="22"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="0.5" id="MB5-Xm-xjA"/>
@@ -89,7 +92,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mb-Pn-BF8" userLabel="White Emoji Button">
-                                    <rect key="frame" x="53" y="9" width="37" height="47"/>
+                                    <rect key="frame" x="53" y="14" width="37" height="40.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏻"/>
                                     <userDefinedRuntimeAttributes>
@@ -102,7 +105,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoG-uI-GHK" userLabel="Yellow Emoji Button">
-                                    <rect key="frame" x="92" y="9" width="37" height="47"/>
+                                    <rect key="frame" x="92" y="14" width="37" height="40.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏼"/>
                                     <userDefinedRuntimeAttributes>
@@ -115,7 +118,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-MI-b54" userLabel="Light Emoji Button">
-                                    <rect key="frame" x="131" y="9" width="36.5" height="47"/>
+                                    <rect key="frame" x="131" y="14" width="36.5" height="40.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏽"/>
                                     <userDefinedRuntimeAttributes>
@@ -128,7 +131,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHm-86-9vO" userLabel="Dark Emoji Button">
-                                    <rect key="frame" x="169.5" y="9" width="37" height="47"/>
+                                    <rect key="frame" x="169.5" y="14" width="37" height="40.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏾"/>
                                     <userDefinedRuntimeAttributes>
@@ -141,7 +144,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfO-dx-zZ3" userLabel="Black Emoji Button">
-                                    <rect key="frame" x="208.5" y="9" width="36.5" height="47"/>
+                                    <rect key="frame" x="208.5" y="14" width="36.5" height="40.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏿"/>
                                     <userDefinedRuntimeAttributes>
@@ -164,7 +167,7 @@
                                 <constraint firstItem="xoG-uI-GHK" firstAttribute="leading" secondItem="9mb-Pn-BF8" secondAttribute="trailing" constant="2" id="PN4-7v-06p"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="bottom" secondItem="kO5-sD-k4Q" secondAttribute="bottom" id="QCr-fZ-1dL"/>
                                 <constraint firstItem="xoG-uI-GHK" firstAttribute="top" secondItem="9mb-Pn-BF8" secondAttribute="top" id="RTa-Rc-cAW"/>
-                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="top" secondItem="LX6-7h-JVn" secondAttribute="top" constant="9" id="UQP-Sy-Vim"/>
+                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="top" secondItem="LX6-7h-JVn" secondAttribute="top" constant="14" id="UQP-Sy-Vim"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="width" id="X5v-B7-PaE"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" id="Zkk-4x-GcP"/>
                                 <constraint firstAttribute="trailing" secondItem="dfO-dx-zZ3" secondAttribute="trailing" id="bA2-1L-DEz"/>
