@@ -1,0 +1,254 @@
+//
+//  EmojiPickerContentViewController.swift
+//  EmojiPicker
+//
+//  Created by levantAJ on 12/11/18.
+//  Copyright © 2018 levantAJ. All rights reserved.
+//
+
+import UIKit
+
+protocol EmojiPickerContentViewControllerDelegate: class {
+    func emojiPickerViewController(_ controller: EmojiPickerContentViewController, didSelect emoji: String)
+    func emojiPickerViewControllerDidDimiss(_ controller: EmojiPickerContentViewController)
+}
+
+final class EmojiPickerContentViewController: UIViewController {
+    var sourceRect: CGRect = .zero {
+        didSet {
+            popoverPresentationController?.sourceRect = sourceRect
+        }
+    }
+    var sourceView: UIView? {
+        didSet {
+            popoverPresentationController?.sourceView = sourceView
+        }
+    }
+    var permittedArrowDirections: UIPopoverArrowDirection = .any {
+        didSet {
+            popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
+        }
+    }
+    var emojiFontSize: CGFloat = 29 {
+        didSet {
+            emojisCollectionView?.reloadData()
+        }
+    }
+    var backgroundColor: UIColor? = UIColor.white.withAlphaComponent(0.5) {
+        didSet {
+            changeDarkModeStyle()
+        }
+    }
+    var darkModeBackgroundColor: UIColor? = UIColor.black.withAlphaComponent(0.5) {
+        didSet {
+            changeDarkModeStyle()
+        }
+    }
+    var isDarkMode = false {
+        didSet {
+            changeDarkModeStyle()
+        }
+    }
+    var language: String? {
+        didSet {
+            UserDefaults.standard.set(language, forKey: Constant.CurrentLanguage.currentLanguageKey)
+        }
+    }
+    var dismissAfterSelected = false
+    weak var delegate: EmojiPickerContentViewControllerDelegate?
+    
+    @IBOutlet weak var emojisCollectionView: UICollectionView!
+    @IBOutlet weak var groupsCollectionView: UICollectionView!
+    @IBOutlet weak var bottomVisualEffectView: UIVisualEffectView!
+    @IBOutlet weak var groupTopLineView: UIView!
+    var selectedGroupCell: GroupCollectionViewCell?
+    lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel(userDefaults: UserDefaults.standard)
+    lazy var vibrator: Vibrating = Vibrator()
+    lazy var tagView: TagViewProtocol = TagView.shared
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        modalPresentationStyle = .popover
+        popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
+        popoverPresentationController?.delegate = self
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension EmojiPickerContentViewController: UIPopoverPresentationControllerDelegate {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        delegate?.emojiPickerViewControllerDidDimiss(self)
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension EmojiPickerContentViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if collectionView == emojisCollectionView {
+            return viewModel.numberOfSections
+        }
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == emojisCollectionView {
+            return viewModel.numberOfEmojis(section: section)
+        }
+        return viewModel.numberOfSections
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == emojisCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.EmojiCollectionViewCell.identifier, for: indexPath) as! EmojiCollectionViewCell
+            cell.delegate = self
+            cell.emojiFontSize = emojiFontSize
+            if let emojis = viewModel.emojis(at: indexPath) {
+                cell.emojis = emojis
+            }
+            return cell
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.GroupCollectionViewCell.identifier, for: indexPath) as! GroupCollectionViewCell
+        cell.indexPath = indexPath
+        cell.delegate = self
+        cell.isDarkMode = isDarkMode
+        if let group = EmojiGroup(index: indexPath.item) {
+            cell.image = UIImage(named: group.rawValue, in: Bundle(for: GroupCollectionViewCell.self), compatibleWith: nil)
+        }
+        if selectedGroupCell == nil {
+            selectedGroupCell = cell
+            selectedGroupCell?.isSelected = true
+        }
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+
+extension EmojiPickerContentViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == emojisCollectionView {
+            return Constant.EmojiCollectionViewCell.size
+        }
+        return CGSize(width: max(collectionView.frame.width/CGFloat(viewModel.numberOfSections), 32), height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if collectionView == emojisCollectionView {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.EmojiHeaderView.identifier, for: indexPath) as! EmojiHeaderView
+            if let group = EmojiGroup(index: indexPath.section) {
+                headerView.title = group.name
+            }
+            return headerView
+        }
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.GroupHeaderView.identifier, for: indexPath)
+        return headerView
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension EmojiPickerContentViewController {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        selectCurrentGroupCell()
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        selectCurrentGroupCell()
+    }
+}
+
+// MARK: - GroupCollectionViewCellDelegate
+
+extension EmojiPickerContentViewController: EmojiCollectionViewCellDelegate {
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emojis: [String]) {
+        tagView.show(sourceView: emojisCollectionView, sourceRect: cell.frame, emojis: emojis, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+    }
+    
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emojis: [String]) {
+        tagView.hide()
+        guard let emoji = emojis.first else { return }
+        delegate?.emojiPickerViewController(self, didSelect: emoji)
+        viewModel.select(emoji: emoji)
+        if dismissAfterSelected {
+            dismiss(animated: true) { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.delegate?.emojiPickerViewControllerDidDimiss(strongSelf)
+            }
+        } else {
+            emojisCollectionView.reloadSections(IndexSet(integer: 0))
+        }
+    }
+    
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpOutside emojis: [String]) {
+        tagView.hide()
+    }
+}
+
+// MARK: - GroupCollectionViewCellDelegate
+
+extension EmojiPickerContentViewController: GroupCollectionViewCellDelegate {
+    func groupCollectionViewCell(_ cell: GroupCollectionViewCell, didSelect indexPath: IndexPath) {
+        selectedGroupCell?.isSelected = false
+        selectedGroupCell = cell
+        selectedGroupCell?.isSelected = true
+        if indexPath.item == 0 {
+            emojisCollectionView.scrollRectToVisible(CGRect(origin: .zero, size: CGSize(width: 1, height: 1)), animated: true)
+        } else if let attributes = emojisCollectionView.collectionViewLayout.layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: indexPath.item)) {
+            emojisCollectionView.setContentOffset(CGPoint(x: 0, y: attributes.frame.origin.y - emojisCollectionView.contentInset.top), animated: true)
+        }
+    }
+}
+
+// MARK: - Privates
+
+extension EmojiPickerContentViewController {
+    private func setupViews() {
+        emojisCollectionView.delegate = self
+        emojisCollectionView.dataSource = self
+        groupsCollectionView.delegate = self
+        groupsCollectionView.dataSource = self
+        
+        var nib = UINib(nibName: Constant.EmojiCollectionViewCell.identifier, bundle: Bundle(for: EmojiCollectionViewCell.self))
+        emojisCollectionView.register(nib, forCellWithReuseIdentifier: Constant.EmojiCollectionViewCell.identifier)
+        nib = UINib(nibName: Constant.EmojiHeaderView.identifier, bundle: Bundle(for: EmojiHeaderView.self))
+        emojisCollectionView.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.EmojiHeaderView.identifier)
+        var layout = emojisCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.headerReferenceSize = CGSize(width: emojisCollectionView.frame.width, height: Constant.EmojiHeaderView.height)
+        
+        nib = UINib(nibName: Constant.GroupCollectionViewCell.identifier, bundle: Bundle(for: GroupCollectionViewCell.self))
+        groupsCollectionView.register(nib, forCellWithReuseIdentifier: Constant.GroupCollectionViewCell.identifier)
+        nib = UINib(nibName: Constant.GroupHeaderView.identifier, bundle: Bundle(for: GroupHeaderView.self))
+        groupsCollectionView.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.GroupHeaderView.identifier)
+        layout = groupsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.headerReferenceSize = CGSize(width: 0, height: 0)
+        
+        changeDarkModeStyle()
+    }
+    
+    private func changeDarkModeStyle() {
+        popoverPresentationController?.backgroundColor = isDarkMode ? darkModeBackgroundColor : backgroundColor
+        bottomVisualEffectView?.effect = UIBlurEffect(style: isDarkMode ? .dark : .light)
+        groupTopLineView?.backgroundColor = UIColor(hexString: isDarkMode ? "#3d3d3d" : "#9d9d9d")?.withAlphaComponent(0.3)
+    }
+    
+    private func selectCurrentGroupCell() {
+        guard let emojiCell = emojisCollectionView.visibleCells.first,
+            let indexPath = emojisCollectionView.indexPath(for: emojiCell),
+            let groupCell = groupsCollectionView.cellForItem(at: IndexPath(item: indexPath.section, section: 0)) as? GroupCollectionViewCell else { return }
+        selectedGroupCell?.isSelected = false
+        selectedGroupCell = groupCell
+        selectedGroupCell?.isSelected = true
+    }
+}
