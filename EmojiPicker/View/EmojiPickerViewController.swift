@@ -71,6 +71,7 @@ public class EmojiPickerViewController: UIViewController, UIPopoverPresentationC
         popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
         popoverPresentationController?.delegate = self
         popoverPresentationController?.containerView?.clipsToBounds = false
+        popoverPresentationController?.presentedView?.clipsToBounds = false
     }
     
     public override func viewDidLoad() {
@@ -165,7 +166,7 @@ extension EmojiPickerViewController {
 
 extension EmojiPickerViewController: EmojiCollectionViewCellDelegate {
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emojis: [String]) {
-        tagView.show(sourceView: emojisCollectionView, sourceRect: cell.frame, emojis: emojis, emojiFontSize: emojiFontSize)
+        tagView.show(sourceView: emojisCollectionView, sourceRect: cell.frame, emojis: emojis, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
     }
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emojis: [String]) {

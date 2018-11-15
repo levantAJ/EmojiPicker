@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3303BE90219C417900B38800 /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3303BE8F219C417900B38800 /* TagView.xib */; };
 		3327619621999B9600433FD4 /* EmojiHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3327619521999B9600433FD4 /* EmojiHeaderView.swift */; };
 		3327619821999BA100433FD4 /* EmojiHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3327619721999BA000433FD4 /* EmojiHeaderView.xib */; };
 		334EE9362199C464000404B8 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE9352199C464000404B8 /* UserDefaultsProtocol.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3303BE8F219C417900B38800 /* TagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagView.xib; sourceTree = "<group>"; };
 		3327619521999B9600433FD4 /* EmojiHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiHeaderView.swift; sourceTree = "<group>"; };
 		3327619721999BA000433FD4 /* EmojiHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiHeaderView.xib; sourceTree = "<group>"; };
 		334EE9352199C464000404B8 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				334EE9352199C464000404B8 /* UserDefaultsProtocol.swift */,
 				33D716A1219A425B00599BDD /* Vibrator.swift */,
 				33D716AF219ACB6500599BDD /* TagView.swift */,
+				3303BE8F219C417900B38800 /* TagView.xib */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				33815604219975C30059EF2F /* GroupCollectionViewCell.xib in Resources */,
 				337131C121995CFC00838035 /* emojis.json in Resources */,
 				33815600219973DE0059EF2F /* Assets.xcassets in Resources */,
+				3303BE90219C417900B38800 /* TagView.xib in Resources */,
 				3327619821999BA100433FD4 /* EmojiHeaderView.xib in Resources */,
 				33D716A7219A814400599BDD /* Localizable.strings in Resources */,
 				337131B92199487B00838035 /* EmojiCollectionViewCell.xib in Resources */,
