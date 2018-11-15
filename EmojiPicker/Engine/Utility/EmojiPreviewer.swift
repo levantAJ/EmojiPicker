@@ -33,6 +33,7 @@ final class EmojiPreviewer: UIView {
     @IBOutlet weak var multipleEmojisLightButton: UIButton!
     @IBOutlet weak var multipleEmojisDarkButton: UIButton!
     @IBOutlet weak var multipleEmojisBlackButton: UIButton!
+    var selectedButton: UIButton?
     
     static let shared: EmojiPreviewer = {
         let nib = UINib(nibName: "EmojiPreviewer", bundle: Bundle(for: EmojiPreviewer.self))
@@ -41,14 +42,6 @@ final class EmojiPreviewer: UIView {
         view.layer.zPosition = CGFloat(Float.greatestFiniteMagnitude)
         return view
     }()
-    
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
-        if view == multipleEmojisAnchorImageView {
-            return nil
-        }
-        return view
-    }
 }
 
 // MARK: - EmojiPreviewable
@@ -62,10 +55,12 @@ extension EmojiPreviewer: EmojiPreviewable {
             multipleEmojisWrapperViewTrailingConstraint.isActive = false
             setupView(for: emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
         } else if emojis.count == 6 {
+            multipleEmojisDefaultButton.backgroundColor = multipleEmojisDefaultButton.tintColor
+            selectedButton = multipleEmojisDefaultButton
             singleEmojiWrapperView.isHidden = true
             multipleEmojisWrapperView.isHidden = false
-            singleEmojiWrapperViewTrailingConstraint.isActive = false
             multipleEmojisWrapperViewTrailingConstraint.isActive = true
+            singleEmojiWrapperViewTrailingConstraint.isActive = false
             setupView(for: emojis, sourceView: sourceView, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
         }
     
@@ -74,6 +69,17 @@ extension EmojiPreviewer: EmojiPreviewable {
     
     func hide() {
         removeFromSuperview()
+    }
+}
+
+// MARK: - User Interactions
+
+extension EmojiPreviewer {
+    @IBAction func multipleEmojisButtonTapped(_ button: UIButton) {
+        guard button != selectedButton else { return }
+        selectedButton?.backgroundColor = .clear
+        button.backgroundColor = button.tintColor
+        selectedButton = button
     }
 }
 
