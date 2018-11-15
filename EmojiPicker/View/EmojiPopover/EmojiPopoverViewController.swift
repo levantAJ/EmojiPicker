@@ -9,11 +9,13 @@
 import UIKit
 
 protocol EmojiPickerContentViewControllerDelegate: class {
-    func emojiPickerViewController(_ controller: EmojiPickerContentViewController, didSelect emoji: String)
-    func emojiPickerViewControllerDidDimiss(_ controller: EmojiPickerContentViewController)
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, didSelect emoji: String)
+    func emojiPickerViewControllerDidDimiss(_ controller: EmojiPopoverViewController)
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emojis: [String], sourceView: UIView)
+    func emojiPickerViewControllerHideEmojiPreviewer(_ controller: EmojiPopoverViewController)
 }
 
-final class EmojiPickerContentViewController: UIViewController {
+final class EmojiPopoverViewController: UIViewController {
     var sourceRect: CGRect = .zero {
         didSet {
             popoverPresentationController?.sourceRect = sourceRect
@@ -64,7 +66,6 @@ final class EmojiPickerContentViewController: UIViewController {
     var selectedGroupCell: GroupCollectionViewCell?
     lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel(userDefaults: UserDefaults.standard)
     lazy var vibrator: Vibrating = Vibrator()
-    lazy var tagView: TagViewProtocol = TagView.shared
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -86,7 +87,7 @@ final class EmojiPickerContentViewController: UIViewController {
 
 // MARK: - UICollectionViewDataSource
 
-extension EmojiPickerContentViewController: UIPopoverPresentationControllerDelegate {
+extension EmojiPopoverViewController: UIPopoverPresentationControllerDelegate {
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         delegate?.emojiPickerViewControllerDidDimiss(self)
     }
@@ -94,7 +95,7 @@ extension EmojiPickerContentViewController: UIPopoverPresentationControllerDeleg
 
 // MARK: - UICollectionViewDataSource
 
-extension EmojiPickerContentViewController: UICollectionViewDataSource {
+extension EmojiPopoverViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == emojisCollectionView {
             return viewModel.numberOfSections
@@ -137,7 +138,7 @@ extension EmojiPickerContentViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 
-extension EmojiPickerContentViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension EmojiPopoverViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == emojisCollectionView {
             return Constant.EmojiCollectionViewCell.size
@@ -160,24 +161,29 @@ extension EmojiPickerContentViewController: UICollectionViewDelegate, UICollecti
 
 // MARK: - UIScrollViewDelegate
 
-extension EmojiPickerContentViewController {
+extension EmojiPopoverViewController {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         selectCurrentGroupCell()
     }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         selectCurrentGroupCell()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
     }
 }
 
 // MARK: - GroupCollectionViewCellDelegate
 
-extension EmojiPickerContentViewController: EmojiCollectionViewCellDelegate {
+extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emojis: [String]) {
-        tagView.show(sourceView: emojisCollectionView, sourceRect: cell.frame, emojis: emojis, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emojis, sourceView: cell)
     }
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emojis: [String]) {
-        tagView.hide()
+        delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
         guard let emoji = emojis.first else { return }
         delegate?.emojiPickerViewController(self, didSelect: emoji)
         viewModel.select(emoji: emoji)
@@ -192,13 +198,13 @@ extension EmojiPickerContentViewController: EmojiCollectionViewCellDelegate {
     }
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpOutside emojis: [String]) {
-        tagView.hide()
+        delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
     }
 }
 
 // MARK: - GroupCollectionViewCellDelegate
 
-extension EmojiPickerContentViewController: GroupCollectionViewCellDelegate {
+extension EmojiPopoverViewController: GroupCollectionViewCellDelegate {
     func groupCollectionViewCell(_ cell: GroupCollectionViewCell, didSelect indexPath: IndexPath) {
         selectedGroupCell?.isSelected = false
         selectedGroupCell = cell
@@ -213,7 +219,7 @@ extension EmojiPickerContentViewController: GroupCollectionViewCellDelegate {
 
 // MARK: - Privates
 
-extension EmojiPickerContentViewController {
+extension EmojiPopoverViewController {
     private func setupViews() {
         emojisCollectionView.delegate = self
         emojisCollectionView.dataSource = self

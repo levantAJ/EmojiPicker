@@ -1,5 +1,5 @@
 //
-//  TagView.swift
+//  EmojiPreviewer.swift
 //  EmojiPicker
 //
 //  Created by levantAJ on 13/11/18.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol TagViewProtocol {
+protocol EmojiPreviewable {
     func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool)
     func hide()
 }
 
-final class TagView: UIView {
+final class EmojiPreviewer: UIView {
     @IBOutlet weak var singleEmojiWrapperView: UIView!
     @IBOutlet weak var singleEmojiImageView: UIImageView!
     @IBOutlet weak var singleEmojiLabel: UILabel!
@@ -32,9 +32,9 @@ final class TagView: UIView {
     @IBOutlet weak var multipleEmojisDarkButton: UIButton!
     @IBOutlet weak var multipleEmojisBlackButton: UIButton!
     
-    static let shared: TagView = {
-        let nib = UINib(nibName: "TagView", bundle: Bundle(for: TagView.self))
-        let view = nib.instantiate(withOwner: nil, options: nil)[0] as! TagView
+    static let shared: EmojiPreviewer = {
+        let nib = UINib(nibName: "TagView", bundle: Bundle(for: EmojiPreviewer.self))
+        let view = nib.instantiate(withOwner: nil, options: nil)[0] as! EmojiPreviewer
         view.backgroundColor = .clear
         view.layer.zPosition = CGFloat(Float.greatestFiniteMagnitude)
         return view
@@ -43,7 +43,7 @@ final class TagView: UIView {
 
 // MARK: - TagViewProtocol
 
-extension TagView: TagViewProtocol {
+extension EmojiPreviewer: EmojiPreviewable {
     func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool) {
         singleEmojiWrapperView.isHidden = emojis.count != 1
         multipleEmojisWrapperView.isHidden = !singleEmojiWrapperView.isHidden
@@ -62,9 +62,9 @@ extension TagView: TagViewProtocol {
 
 // MARK: - Privates
 
-extension TagView {
+extension EmojiPreviewer {
     private func setupView(for emoji: String, sourceRect: CGRect, emojiFontSize: CGFloat, isDarkMode: Bool) {
-        let image = UIImage(named: isDarkMode ? "darkEmojiTag" : "lightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
+        let image = UIImage(named: isDarkMode ? "darkEmojiTag" : "lightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         frame.size.width = Constant.EmojiCollectionViewCell.size.width + 37
         frame.size.height = frame.size.width * image.size.height / image.size.width
         frame.origin.x = sourceRect.midX - frame.width/2
@@ -88,7 +88,7 @@ extension TagView {
         multipleEmojisDarkButton.setTitle(emojis[4], for: .normal, animated: false)
         multipleEmojisBlackButton.setTitle(emojis[5], for: .normal, animated: false)
         
-        let image = UIImage(named: isDarkMode ? "darkEmojiTag" : "lightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
+        let image = UIImage(named: isDarkMode ? "darkEmojiTag" : "lightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         let width = Constant.EmojiCollectionViewCell.size.width + 37
         frame.size.height = width * image.size.height / image.size.width
         frame.size.width = (emojiFontSize + 4) * CGFloat(emojis.count) + multipleEmojisLeftImageView.frame.width + multipleEmojisRightImageView.frame.width + 26.2
@@ -97,16 +97,16 @@ extension TagView {
         layoutIfNeeded()
         multipleEmojisAnchorImageViewLeadingConstraint.constant = sourceRect.midX - frame.origin.x - multipleEmojisAnchorImageView.frame.width / 2
         
-        let anchorImage = UIImage(named: isDarkMode ? "anchorDarkEmojiTag" : "anchorLightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
+        let anchorImage = UIImage(named: isDarkMode ? "anchorDarkEmojiTag" : "anchorLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         multipleEmojisAnchorImageView.image = anchorImage
         
-        let leftImage = UIImage(named: isDarkMode ? "leftDarkEmojiTag" : "leftLightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
+        let leftImage = UIImage(named: isDarkMode ? "leftDarkEmojiTag" : "leftLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         multipleEmojisLeftImageView.image = leftImage
         
-        let rightImage = UIImage(named: isDarkMode ? "rightDarkEmojiTag" : "rightLightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
+        let rightImage = UIImage(named: isDarkMode ? "rightDarkEmojiTag" : "rightLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         multipleEmojisRightImageView.image = rightImage
         
-        let centerImage = UIImage(named: isDarkMode ? "centerDarkEmojiTag" : "centerLightEmojiTag", in: Bundle(for: TagView.self), compatibleWith: nil)!
+        let centerImage = UIImage(named: isDarkMode ? "centerDarkEmojiTag" : "centerLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         multipleEmojisCenterLeftImageView.image = centerImage
         multipleEmojisCenterRightImageView.image = centerImage
     }

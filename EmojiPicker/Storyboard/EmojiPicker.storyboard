@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="122" y="-75"/>
         </scene>
-        <!--Emoji Picker Content View Controller-->
+        <!--Emoji Popover View Controller-->
         <scene sceneID="5pz-Ma-R5R">
             <objects>
-                <viewController storyboardIdentifier="EmojiPickerContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6lw-4L-y3L" customClass="EmojiPickerContentViewController" customModule="EmojiPicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmojiPickerContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6lw-4L-y3L" customClass="EmojiPopoverViewController" customModule="EmojiPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cVV-5C-pcb">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
