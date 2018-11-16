@@ -43,6 +43,12 @@ final class EmojiPreviewer: UIView {
         view.layer.zPosition = CGFloat(Float.greatestFiniteMagnitude)
         return view
     }()
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        guard !(touches.first?.view is UIButton) else { return }
+        hide()
+    }
 }
 
 // MARK: - EmojiPreviewable

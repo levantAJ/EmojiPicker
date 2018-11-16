@@ -21,6 +21,6 @@ final class EmojiHeaderView: UICollectionReusableView {
 extension Constant {
     struct EmojiHeaderView {
         static let identifier = "EmojiHeaderView"
-        static let height: CGFloat = 28
+        static let height: CGFloat = 32
     }
 }

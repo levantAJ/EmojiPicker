@@ -23,7 +23,12 @@ final class EmojiPickerViewModel {
         self.userDefaults = userDefaults
         let frequentlyUsedEmojis = userDefaults.array(forKey: Constant.EmojiPickerViewModel.frequentlyUsed) as? [[String]]
         self.emojis[EmojiGroup.frequentlyUsed.index] = frequentlyUsedEmojis ?? []
-        let path = Bundle(for: EmojiPickerViewModel.self).path(forResource: "emojis", ofType: "json")!
+        let path: String
+        if UIDevice.current.systemVersion.compare("10", options: .numeric) == .orderedAscending {
+            path = Bundle(for: EmojiPickerViewModel.self).path(forResource: "emojis9.1", ofType: "json")!
+        } else {
+            path = Bundle(for: EmojiPickerViewModel.self).path(forResource: "emojis", ofType: "json")!
+        }
         let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
         let emojis = try! JSONDecoder().decode([Emoji].self, from: data)
         for emoji in emojis {
