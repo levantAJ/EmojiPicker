@@ -36,6 +36,7 @@
 		33D716A7219A814400599BDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33D716A9219A814400599BDD /* Localizable.strings */; };
 		33D716B0219ACB6500599BDD /* EmojiPreviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D716AF219ACB6500599BDD /* EmojiPreviewer.swift */; };
 		33EA6B49219EBB8F00DDB012 /* emojis9.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 33EA6B48219EBB8E00DDB012 /* emojis9.1.json */; };
+		33EA6B4B219EC7A700DDB012 /* emojis11.0.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 33EA6B4A219EC7A700DDB012 /* emojis11.0.1.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		33D716AA219A815000599BDD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33D716AF219ACB6500599BDD /* EmojiPreviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPreviewer.swift; sourceTree = "<group>"; };
 		33EA6B48219EBB8E00DDB012 /* emojis9.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emojis9.1.json; sourceTree = "<group>"; };
+		33EA6B4A219EC7A700DDB012 /* emojis11.0.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emojis11.0.1.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			children = (
 				337131C021995CFC00838035 /* emojis.json */,
 				33EA6B48219EBB8E00DDB012 /* emojis9.1.json */,
+				33EA6B4A219EC7A700DDB012 /* emojis11.0.1.json */,
 				338155FF219973DE0059EF2F /* Assets.xcassets */,
 				33D716A9219A814400599BDD /* Localizable.strings */,
 			);
@@ -341,6 +344,7 @@
 				33D2B514219908DC00D528EC /* EmojiPicker.storyboard in Resources */,
 				33815604219975C30059EF2F /* GroupCollectionViewCell.xib in Resources */,
 				3303BE9D219D5F4300B38800 /* EmojiPopover.storyboard in Resources */,
+				33EA6B4B219EC7A700DDB012 /* emojis11.0.1.json in Resources */,
 				33EA6B49219EBB8F00DDB012 /* emojis9.1.json in Resources */,
 				337131C121995CFC00838035 /* emojis.json in Resources */,
 				33815600219973DE0059EF2F /* Assets.xcassets in Resources */,
