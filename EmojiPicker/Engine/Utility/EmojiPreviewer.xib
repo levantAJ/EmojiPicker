@@ -79,6 +79,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="multipleEmojisButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="JEP-9Q-enZ"/>
+                                        <action selector="multipleEmojisButtonTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="mEb-6L-Zro"/>
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-50-OGL" userLabel="Separate View">
@@ -101,6 +102,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="multipleEmojisButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="vpX-dH-m7K"/>
+                                        <action selector="multipleEmojisButtonTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="eW4-sH-44s"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoG-uI-GHK" userLabel="Yellow Emoji Button">
@@ -115,6 +117,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="multipleEmojisButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="aYa-u7-dns"/>
+                                        <action selector="multipleEmojisButtonTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="RAX-cv-JzT"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-MI-b54" userLabel="Light Emoji Button">
@@ -129,6 +132,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="multipleEmojisButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="QbZ-cL-DSi"/>
+                                        <action selector="multipleEmojisButtonTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="Ezy-Wm-8Lz"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHm-86-9vO" userLabel="Dark Emoji Button">
@@ -143,6 +147,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="multipleEmojisButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="SzC-r0-OIa"/>
+                                        <action selector="multipleEmojisButtonTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="i82-rK-4IO"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfO-dx-zZ3" userLabel="Black Emoji Button">
@@ -157,6 +162,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="multipleEmojisButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="olU-Qj-8MA"/>
+                                        <action selector="multipleEmojisButtonTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="wwW-dA-cW5"/>
                                     </connections>
                                 </button>
                             </subviews>

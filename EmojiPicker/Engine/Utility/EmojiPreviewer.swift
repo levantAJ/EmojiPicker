@@ -80,11 +80,6 @@ extension EmojiPreviewer: EmojiPreviewable {
 
 extension EmojiPreviewer {
     @IBAction func multipleEmojisButtonTapped(_ button: UIButton) {
-        guard button != selectedButton else { return }
-        vibrator.vibrate()
-        selectedButton?.backgroundColor = .clear
-        button.backgroundColor = button.tintColor
-        selectedButton = button
         switch button {
         case multipleEmojisDefaultButton:
             completion?(emojis[0])
@@ -101,6 +96,15 @@ extension EmojiPreviewer {
         default:
             return
         }
+        hide()
+    }
+    
+    @IBAction func multipleEmojisButtonTouchDown(_ button: UIButton) {
+        guard button != selectedButton else { return }
+        vibrator.vibrate()
+        selectedButton?.backgroundColor = .clear
+        button.backgroundColor = button.tintColor
+        selectedButton = button
     }
 }
 
