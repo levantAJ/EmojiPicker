@@ -167,7 +167,7 @@ extension EmojiPreviewer {
             factor = abs(frame.minX) - multipleEmojisLeftImageView.frame.width
         } else if frame.minX <= 0 {
             factor = abs(frame.minX) + multipleEmojisLeftImageView.frame.width
-        } else if sourceView.frame.width - sourceView.frame.maxX <= multipleEmojisRightImageView.frame.width + multipleEmojisAnchorImageView.frame.width/3 {
+        } else if sourceView.frame.width - sourceRect.maxX <= multipleEmojisRightImageView.frame.width + multipleEmojisAnchorImageView.frame.width/3 {
             factor = sourceView.frame.width - frame.maxX + multipleEmojisRightImageView.frame.width
         } else if frame.maxX >= sourceView.frame.width {
             factor = sourceView.frame.width - frame.maxX - multipleEmojisRightImageView.frame.width
