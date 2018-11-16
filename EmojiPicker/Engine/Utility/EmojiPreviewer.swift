@@ -8,8 +8,13 @@
 
 import UIKit
 
+enum EmojiPreviewerPresentedType {
+    case single
+    case multiple
+}
+
 protocol EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?)
+    func show(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, presentedType: EmojiPreviewerPresentedType, completion: ((String) -> Void)?)
     func hide()
 }
 
@@ -54,15 +59,17 @@ final class EmojiPreviewer: UIView {
 // MARK: - EmojiPreviewable
 
 extension EmojiPreviewer: EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?) {
+    func show(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, presentedType: EmojiPreviewerPresentedType, completion: ((String) -> Void)?) {
         self.emoji = emoji
         self.completion = completion
-        if emoji.emojis.count == 1 {
+        switch presentedType {
+        case .single:
             singleEmojiWrapperView.isHidden = false
             multipleEmojisWrapperView.isHidden = true
             setupView(for: emoji.emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
             completion?(emoji.emojis[0])
-        } else if emoji.emojis.count == 6 {
+        case .multiple:
+            guard emoji.emojis.count > 1 else { return }
             singleEmojiWrapperView.isHidden = true
             multipleEmojisWrapperView.isHidden = false
             setupView(for: emoji, sourceView: sourceView, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)

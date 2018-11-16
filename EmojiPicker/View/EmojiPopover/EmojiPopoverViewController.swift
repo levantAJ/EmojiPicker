@@ -11,7 +11,7 @@ import UIKit
 protocol EmojiPopoverViewControllerDelegate: class {
     func emojiPickerViewController(_ controller: EmojiPopoverViewController, didSelect emoji: Emoji)
     func emojiPickerViewControllerDidDimiss(_ controller: EmojiPopoverViewController)
-    func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emoji: Emoji, sourceView: UIView)
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emoji: Emoji, presentedType: EmojiPreviewerPresentedType, sourceView: UIView)
     func emojiPickerViewControllerHideEmojiPreviewer(_ controller: EmojiPopoverViewController)
 }
 
@@ -179,7 +179,7 @@ extension EmojiPopoverViewController {
 
 extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emoji: Emoji) {
-        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emoji, sourceView: cell)
+        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emoji, presentedType: .single, sourceView: cell)
     }
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emoji: Emoji) {
@@ -200,7 +200,7 @@ extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
     }
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, longPress emoji: Emoji) {
-        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emoji, sourceView: cell)
+        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emoji, presentedType: .multiple, sourceView: cell)
     }
 }
 

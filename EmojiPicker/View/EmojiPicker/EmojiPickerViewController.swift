@@ -48,8 +48,8 @@ open class EmojiPickerViewController: UIViewController {
 // MARK: - EmojiPickerContentViewControllerDelegate
 
 extension EmojiPickerViewController: EmojiPopoverViewControllerDelegate {
-    func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emoji: Emoji, sourceView: UIView) {
-        emojiPreviewer.show(sourceView: view.window!, sourceRect: sourceView.convert(sourceView.bounds, to: view), emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode) { [weak self] emoji in
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emoji: Emoji, presentedType: EmojiPreviewerPresentedType, sourceView: UIView) {
+        emojiPreviewer.show(sourceView: view.window!, sourceRect: sourceView.convert(sourceView.bounds, to: view), emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode, presentedType: presentedType) { [weak self] emoji in
             guard let strongSelf = self else { return }
             strongSelf.delegate?.emojiPickerViewController(strongSelf, didSelect: emoji)
         }
