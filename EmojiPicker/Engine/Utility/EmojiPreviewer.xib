@@ -13,17 +13,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EmojiPreviewer" customModule="EmojiPicker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="294" height="161"/>
+            <rect key="frame" x="0.0" y="0.0" width="330" height="161"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90S-tF-RvS" userLabel="Single Emoji Wrapper View">
-                    <rect key="frame" x="0.0" y="0.0" width="294" height="161"/>
+                    <rect key="frame" x="0.0" y="0.0" width="113" height="161"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="eq2-eh-scs">
-                            <rect key="frame" x="0.0" y="0.0" width="294" height="161"/>
+                            <rect key="frame" x="0.0" y="0.0" width="113" height="161"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcD-Lc-wwe">
-                            <rect key="frame" x="0.0" y="17" width="294" height="0.0"/>
+                            <rect key="frame" x="0.0" y="17" width="113" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="27"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZr-gF-gnX" userLabel="Multiple Emojis Wrapper View">
-                    <rect key="frame" x="0.0" y="0.0" width="294" height="161"/>
+                    <rect key="frame" x="0.0" y="0.0" width="271" height="161"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="gzk-C3-C0J" userLabel="Left Image View">
                             <rect key="frame" x="0.0" y="0.0" width="24.5" height="161"/>
@@ -53,10 +53,10 @@
                             <rect key="frame" x="24.5" y="0.0" width="25.5" height="161"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="centerLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="ncy-UU-tbG" userLabel="Center Right Image View">
-                            <rect key="frame" x="132.5" y="0.0" width="137" height="161"/>
+                            <rect key="frame" x="132.5" y="0.0" width="114.5" height="161"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="MPe-vD-Oqv" userLabel="Right Image View">
-                            <rect key="frame" x="269.5" y="0.0" width="24.5" height="161"/>
+                            <rect key="frame" x="247" y="0.0" width="24" height="161"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anchorLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="prc-BP-fb7" userLabel="Anchor Image View">
                             <rect key="frame" x="50" y="0.0" width="82.5" height="161"/>
@@ -65,13 +65,10 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX6-7h-JVn" userLabel="Buttons Wrapper View">
-                            <rect key="frame" x="24.5" y="0.0" width="245" height="161"/>
+                            <rect key="frame" x="24.5" y="0.0" width="222.5" height="80.5"/>
                             <subviews>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kO5-sD-k4Q" userLabel="Default Emoji Button">
-                                    <rect key="frame" x="0.0" y="14" width="36.5" height="40.5"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="height" multiplier="1:1.1" id="n2C-AQ-RbI"/>
-                                    </constraints>
+                                    <rect key="frame" x="0.0" y="17" width="33" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶"/>
                                     <userDefinedRuntimeAttributes>
@@ -84,7 +81,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-50-OGL" userLabel="Separate View">
-                                    <rect key="frame" x="44.5" y="24.5" width="0.5" height="22"/>
+                                    <rect key="frame" x="41" y="30.5" width="0.5" height="22"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="0.5" id="MB5-Xm-xjA"/>
@@ -92,7 +89,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mb-Pn-BF8" userLabel="White Emoji Button">
-                                    <rect key="frame" x="53" y="14" width="37" height="40.5"/>
+                                    <rect key="frame" x="49.5" y="17" width="33" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏻"/>
                                     <userDefinedRuntimeAttributes>
@@ -105,7 +102,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoG-uI-GHK" userLabel="Yellow Emoji Button">
-                                    <rect key="frame" x="92" y="14" width="37" height="40.5"/>
+                                    <rect key="frame" x="84.5" y="17" width="33" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏼"/>
                                     <userDefinedRuntimeAttributes>
@@ -118,7 +115,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-MI-b54" userLabel="Light Emoji Button">
-                                    <rect key="frame" x="131" y="14" width="36.5" height="40.5"/>
+                                    <rect key="frame" x="119.5" y="17" width="33" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏽"/>
                                     <userDefinedRuntimeAttributes>
@@ -131,7 +128,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHm-86-9vO" userLabel="Dark Emoji Button">
-                                    <rect key="frame" x="169.5" y="14" width="37" height="40.5"/>
+                                    <rect key="frame" x="154.5" y="17" width="33" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏾"/>
                                     <userDefinedRuntimeAttributes>
@@ -144,7 +141,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfO-dx-zZ3" userLabel="Black Emoji Button">
-                                    <rect key="frame" x="208.5" y="14" width="36.5" height="40.5"/>
+                                    <rect key="frame" x="189.5" y="17" width="33" height="47"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                     <state key="normal" title="👶🏿"/>
                                     <userDefinedRuntimeAttributes>
@@ -167,13 +164,14 @@
                                 <constraint firstItem="xoG-uI-GHK" firstAttribute="leading" secondItem="9mb-Pn-BF8" secondAttribute="trailing" constant="2" id="PN4-7v-06p"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="bottom" secondItem="kO5-sD-k4Q" secondAttribute="bottom" id="QCr-fZ-1dL"/>
                                 <constraint firstItem="xoG-uI-GHK" firstAttribute="top" secondItem="9mb-Pn-BF8" secondAttribute="top" id="RTa-Rc-cAW"/>
-                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="top" secondItem="LX6-7h-JVn" secondAttribute="top" constant="14" id="UQP-Sy-Vim"/>
+                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LX6-7h-JVn" secondAttribute="top" constant="4" id="UQP-Sy-Vim"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="width" id="X5v-B7-PaE"/>
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" id="Zkk-4x-GcP"/>
                                 <constraint firstAttribute="trailing" secondItem="dfO-dx-zZ3" secondAttribute="trailing" id="bA2-1L-DEz"/>
                                 <constraint firstItem="7vi-MI-b54" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" id="c9n-mm-cVW"/>
                                 <constraint firstItem="xHm-86-9vO" firstAttribute="bottom" secondItem="kO5-sD-k4Q" secondAttribute="bottom" id="cqa-lD-pMM"/>
                                 <constraint firstItem="7vi-MI-b54" firstAttribute="leading" secondItem="xoG-uI-GHK" secondAttribute="trailing" constant="2" id="e9B-LX-B3k"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kO5-sD-k4Q" secondAttribute="bottom" constant="4" id="fRg-I1-RgA"/>
                                 <constraint firstItem="7vi-MI-b54" firstAttribute="bottom" secondItem="kO5-sD-k4Q" secondAttribute="bottom" id="gTy-Rv-m27"/>
                                 <constraint firstItem="kO5-sD-k4Q" firstAttribute="leading" secondItem="LX6-7h-JVn" secondAttribute="leading" id="geF-JY-WlY"/>
                                 <constraint firstItem="9mb-Pn-BF8" firstAttribute="top" secondItem="kO5-sD-k4Q" secondAttribute="top" id="kH8-Pa-2pd"/>
@@ -182,6 +180,7 @@
                                 <constraint firstItem="dfO-dx-zZ3" firstAttribute="leading" secondItem="xHm-86-9vO" secondAttribute="trailing" constant="2" id="rz6-lV-NyV"/>
                                 <constraint firstItem="xHm-86-9vO" firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="width" id="s4T-iI-KaQ"/>
                                 <constraint firstItem="xoG-uI-GHK" firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="width" id="v0K-2P-vfb"/>
+                                <constraint firstItem="kO5-sD-k4Q" firstAttribute="centerY" secondItem="LX6-7h-JVn" secondAttribute="centerY" id="vOe-hU-Z5h"/>
                                 <constraint firstItem="9mb-Pn-BF8" firstAttribute="width" secondItem="kO5-sD-k4Q" secondAttribute="width" id="wyz-lw-6CK"/>
                                 <constraint firstItem="9mb-Pn-BF8" firstAttribute="leading" secondItem="GVm-50-OGL" secondAttribute="trailing" constant="8" id="x9w-GG-W2w"/>
                             </constraints>
@@ -189,15 +188,15 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="LX6-7h-JVn" secondAttribute="bottom" id="0Jr-O6-oos"/>
                         <constraint firstItem="prc-BP-fb7" firstAttribute="leading" secondItem="UZr-gF-gnX" secondAttribute="leading" constant="50" id="0iM-Ad-JWQ"/>
                         <constraint firstItem="ncy-UU-tbG" firstAttribute="bottom" secondItem="prc-BP-fb7" secondAttribute="bottom" id="3XJ-Rh-g3X"/>
                         <constraint firstItem="prc-BP-fb7" firstAttribute="top" secondItem="UZr-gF-gnX" secondAttribute="top" id="57g-Rq-59L"/>
                         <constraint firstAttribute="trailing" secondItem="MPe-vD-Oqv" secondAttribute="trailing" id="6bS-zM-FMn"/>
-                        <constraint firstItem="MPe-vD-Oqv" firstAttribute="leading" secondItem="LX6-7h-JVn" secondAttribute="trailing" id="Adp-oT-wtK"/>
+                        <constraint firstItem="LX6-7h-JVn" firstAttribute="leading" secondItem="fql-Qc-sEz" secondAttribute="leading" id="9qb-Cp-haa"/>
                         <constraint firstItem="fql-Qc-sEz" firstAttribute="leading" secondItem="gzk-C3-C0J" secondAttribute="trailing" id="Dav-W3-hXh"/>
                         <constraint firstItem="gzk-C3-C0J" firstAttribute="leading" secondItem="UZr-gF-gnX" secondAttribute="leading" id="LVF-eQ-XnR"/>
                         <constraint firstItem="prc-BP-fb7" firstAttribute="bottom" secondItem="fql-Qc-sEz" secondAttribute="bottom" id="O0E-fF-4qS"/>
+                        <constraint firstItem="LX6-7h-JVn" firstAttribute="trailing" secondItem="ncy-UU-tbG" secondAttribute="trailing" id="Ouo-9f-Y9I"/>
                         <constraint firstItem="gzk-C3-C0J" firstAttribute="bottom" secondItem="prc-BP-fb7" secondAttribute="bottom" id="U0J-7K-KUf"/>
                         <constraint firstItem="fql-Qc-sEz" firstAttribute="top" secondItem="prc-BP-fb7" secondAttribute="top" id="UvH-NY-22f"/>
                         <constraint firstItem="MPe-vD-Oqv" firstAttribute="leading" secondItem="ncy-UU-tbG" secondAttribute="trailing" id="WCS-tU-7k0"/>
@@ -207,7 +206,7 @@
                         <constraint firstItem="MPe-vD-Oqv" firstAttribute="top" secondItem="prc-BP-fb7" secondAttribute="top" id="ex6-KS-gfT"/>
                         <constraint firstItem="MPe-vD-Oqv" firstAttribute="width" secondItem="gzk-C3-C0J" secondAttribute="width" id="hPx-87-TFB"/>
                         <constraint firstItem="prc-BP-fb7" firstAttribute="leading" secondItem="fql-Qc-sEz" secondAttribute="trailing" id="hzs-Ox-oO7"/>
-                        <constraint firstItem="LX6-7h-JVn" firstAttribute="leading" secondItem="gzk-C3-C0J" secondAttribute="trailing" id="qyw-OD-ce5"/>
+                        <constraint firstItem="LX6-7h-JVn" firstAttribute="bottom" secondItem="prc-BP-fb7" secondAttribute="centerY" id="mLq-6H-QW0"/>
                         <constraint firstItem="gzk-C3-C0J" firstAttribute="top" secondItem="prc-BP-fb7" secondAttribute="top" id="rcm-rq-dOz"/>
                         <constraint firstItem="ncy-UU-tbG" firstAttribute="top" secondItem="prc-BP-fb7" secondAttribute="top" id="wiG-o6-dUT"/>
                         <constraint firstItem="MPe-vD-Oqv" firstAttribute="bottom" secondItem="prc-BP-fb7" secondAttribute="bottom" id="xSs-Hn-Nbr"/>
@@ -227,6 +226,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="EDt-ZS-PbO"/>
+                    <exclude reference="Mef-bL-JDX"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="multipleEmojisAnchorImageView" destination="prc-BP-fb7" id="ObR-UI-1kM"/>
                 <outlet property="multipleEmojisAnchorImageViewLeadingConstraint" destination="0iM-Ad-JWQ" id="Oum-0i-ccV"/>
@@ -240,14 +245,12 @@
                 <outlet property="multipleEmojisRightImageView" destination="MPe-vD-Oqv" id="WKl-7I-a11"/>
                 <outlet property="multipleEmojisWhiteButton" destination="9mb-Pn-BF8" id="Tdu-Qh-XmE"/>
                 <outlet property="multipleEmojisWrapperView" destination="UZr-gF-gnX" id="oAz-Zi-UWM"/>
-                <outlet property="multipleEmojisWrapperViewTrailingConstraint" destination="Mef-bL-JDX" id="8lz-Iq-HAj"/>
                 <outlet property="multipleEmojisYellowButton" destination="xoG-uI-GHK" id="hgd-pd-Qb2"/>
                 <outlet property="singleEmojiImageView" destination="eq2-eh-scs" id="BSK-L2-aR5"/>
                 <outlet property="singleEmojiLabel" destination="pcD-Lc-wwe" id="7oi-N3-xg7"/>
                 <outlet property="singleEmojiWrapperView" destination="90S-tF-RvS" id="y2k-5t-I9S"/>
-                <outlet property="singleEmojiWrapperViewTrailingConstraint" destination="EDt-ZS-PbO" id="AZp-pU-wTI"/>
             </connections>
-            <point key="canvasLocation" x="326.39999999999998" y="434.03298350824593"/>
+            <point key="canvasLocation" x="355.19999999999999" y="434.03298350824593"/>
         </view>
     </objects>
     <resources>
