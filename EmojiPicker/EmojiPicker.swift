@@ -16,3 +16,4 @@ open class EmojiPicker {
         return viewController
     }
 }
+

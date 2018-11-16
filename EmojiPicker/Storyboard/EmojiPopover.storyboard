@@ -50,7 +50,6 @@
                                                     <cells/>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="zgu-VZ-OgQ" secondAttribute="bottom" id="EX0-1r-gPc"/>
                                                 <constraint firstItem="zgu-VZ-OgQ" firstAttribute="top" secondItem="c0L-Zw-YEU" secondAttribute="top" id="I0a-zd-LGQ"/>

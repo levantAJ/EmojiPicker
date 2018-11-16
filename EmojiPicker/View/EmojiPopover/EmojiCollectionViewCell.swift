@@ -18,6 +18,7 @@ protocol EmojiCollectionViewCellDelegate: class {
 final class EmojiCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var emojiButton: UIButton!
     weak var delegate: EmojiCollectionViewCellDelegate?
+    lazy var vibrator: Vibratable = Vibrator()
     var emojis: [String]! {
         didSet {
             emojiButton.setTitle(emojis.first, for: .normal, animated: false)
@@ -56,6 +57,9 @@ extension EmojiCollectionViewCell {
                 delegate?.emojiCollectionViewCell(self, touchUpOutside: emojis[0])
             }
         } else {
+            if longPressGestureRecognizer.state == .began {
+                vibrator.vibrate()
+            }
             delegate?.emojiCollectionViewCell(self, longPress: emojis)
         }
     }

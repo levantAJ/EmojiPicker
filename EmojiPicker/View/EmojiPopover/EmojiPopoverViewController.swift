@@ -200,7 +200,6 @@ extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
     }
     
     func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, longPress emojis: [String]) {
-        vibrator.vibrate()
         delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emojis, sourceView: cell)
     }
 }
