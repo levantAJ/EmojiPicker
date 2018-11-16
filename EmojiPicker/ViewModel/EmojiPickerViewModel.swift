@@ -24,6 +24,8 @@ final class EmojiPickerViewModel {
         if let data = userDefaults.data(forKey: Constant.EmojiPickerViewModel.frequentlyUsed) {
             let frequentlyUsedEmojis = try! JSONDecoder().decode([Emoji].self, from: data)
             self.emojis[EmojiGroup.frequentlyUsed.index] = frequentlyUsedEmojis
+        } else {
+            self.emojis[EmojiGroup.frequentlyUsed.index] = []
         }
         let systemVersion = UIDevice.current.systemVersion
         let path: String
