@@ -158,13 +158,13 @@ extension EmojiPreviewer {
         frame.origin.x = sourceRect.midX - frame.width/2
         frame.origin.y = sourceRect.minY - frame.height + sourceRect.height + 9
         multipleEmojisAnchorImageViewLeadingConstraint.constant = sourceRect.midX - frame.origin.x - multipleEmojisAnchorImageView.frame.width / 2
-//        var factor: CGFloat = 0
-//        if frame.minX <= 0 {
-//            factor = abs(frame.minX)
-//        } else if frame.maxX >= sourceView.frame.width {
-//            factor = sourceView.frame.width - frame.maxX
-//        }
-//        frame.origin.x = frame.origin.x + factor
-//        multipleEmojisAnchorImageViewLeadingConstraint.constant = multipleEmojisAnchorImageViewLeadingConstraint.constant - factor
+        var factor: CGFloat = 0
+        if frame.minX <= 0 {
+            factor = abs(frame.minX) + multipleEmojisLeftImageView.frame.width
+        } else if frame.maxX >= sourceView.frame.width {
+            factor = sourceView.frame.width - frame.maxX - multipleEmojisRightImageView.frame.width
+        }
+        frame.origin.x = frame.origin.x + factor
+        multipleEmojisAnchorImageViewLeadingConstraint.constant = multipleEmojisAnchorImageViewLeadingConstraint.constant - factor
     }
 }
