@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?)
+    func show(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?)
     func hide()
 }
 
@@ -33,7 +33,7 @@ final class EmojiPreviewer: UIView {
     @IBOutlet weak var multipleEmojisBlackButton: UIButton!
     var selectedButton: UIButton?
     lazy var vibrator: Vibratable = Vibrator()
-    var emojis: [String] = []
+    var emoji: Emoji!
     var completion: ((String) -> Void)?
     
     static let shared: EmojiPreviewer = {
@@ -54,18 +54,18 @@ final class EmojiPreviewer: UIView {
 // MARK: - EmojiPreviewable
 
 extension EmojiPreviewer: EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emojis: [String], emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?) {
-        self.emojis = emojis
+    func show(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?) {
+        self.emoji = emoji
         self.completion = completion
-        if emojis.count == 1 {
+        if emoji.emojis.count == 1 {
             singleEmojiWrapperView.isHidden = false
             multipleEmojisWrapperView.isHidden = true
-            setupView(for: emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
-            completion?(emojis[0])
-        } else if emojis.count == 6 {
+            setupView(for: emoji.emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+            completion?(emoji.emojis[0])
+        } else if emoji.emojis.count == 6 {
             singleEmojiWrapperView.isHidden = true
             multipleEmojisWrapperView.isHidden = false
-            setupView(for: emojis, sourceView: sourceView, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+            setupView(for: emoji, sourceView: sourceView, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
         }
     
         sourceView.addSubview(self)
@@ -82,17 +82,17 @@ extension EmojiPreviewer {
     @IBAction func multipleEmojisButtonTapped(_ button: UIButton) {
         switch button {
         case multipleEmojisDefaultButton:
-            completion?(emojis[0])
+            completion?(emoji.emojis[0])
         case multipleEmojisWhiteButton:
-            completion?(emojis[1])
+            completion?(emoji.emojis[1])
         case multipleEmojisYellowButton:
-            completion?(emojis[2])
+            completion?(emoji.emojis[2])
         case multipleEmojisLightButton:
-            completion?(emojis[3])
+            completion?(emoji.emojis[3])
         case multipleEmojisDarkButton:
-            completion?(emojis[4])
+            completion?(emoji.emojis[4])
         case multipleEmojisBlackButton:
-            completion?(emojis[5])
+            completion?(emoji.emojis[5])
         default:
             return
         }
@@ -124,7 +124,7 @@ extension EmojiPreviewer {
         frame.origin.y = sourceRect.minY - frame.height + sourceRect.height + 9
     }
     
-    private func setupView(for emojis: [String], sourceView: UIView, sourceRect: CGRect, emojiFontSize: CGFloat, isDarkMode: Bool) {
+    private func setupView(for emoji: Emoji, sourceView: UIView, sourceRect: CGRect, emojiFontSize: CGFloat, isDarkMode: Bool) {
         multipleEmojisDefaultButton.titleLabel?.font = UIFont.systemFont(ofSize: emojiFontSize)
         multipleEmojisDefaultButton.backgroundColor = multipleEmojisDefaultButton.tintColor
         selectedButton = multipleEmojisDefaultButton
@@ -138,12 +138,12 @@ extension EmojiPreviewer {
         multipleEmojisDarkButton.backgroundColor = .clear
         multipleEmojisBlackButton.titleLabel?.font = multipleEmojisDefaultButton.titleLabel?.font
         multipleEmojisBlackButton.backgroundColor = .clear
-        multipleEmojisDefaultButton.setTitle(emojis[0], for: .normal, animated: false)
-        multipleEmojisWhiteButton.setTitle(emojis[1], for: .normal, animated: false)
-        multipleEmojisYellowButton.setTitle(emojis[2], for: .normal, animated: false)
-        multipleEmojisLightButton.setTitle(emojis[3], for: .normal, animated: false)
-        multipleEmojisDarkButton.setTitle(emojis[4], for: .normal, animated: false)
-        multipleEmojisBlackButton.setTitle(emojis[5], for: .normal, animated: false)
+        multipleEmojisDefaultButton.setTitle(emoji.emojis[0], for: .normal, animated: false)
+        multipleEmojisWhiteButton.setTitle(emoji.emojis[1], for: .normal, animated: false)
+        multipleEmojisYellowButton.setTitle(emoji.emojis[2], for: .normal, animated: false)
+        multipleEmojisLightButton.setTitle(emoji.emojis[3], for: .normal, animated: false)
+        multipleEmojisDarkButton.setTitle(emoji.emojis[4], for: .normal, animated: false)
+        multipleEmojisBlackButton.setTitle(emoji.emojis[5], for: .normal, animated: false)
         
         let anchorImage = UIImage(named: isDarkMode ? "anchorDarkEmojiTag" : "anchorLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         multipleEmojisAnchorImageView.image = anchorImage

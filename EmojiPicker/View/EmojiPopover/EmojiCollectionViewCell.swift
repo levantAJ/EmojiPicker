@@ -9,19 +9,19 @@
 import UIKit
 
 protocol EmojiCollectionViewCellDelegate: class {
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emoji: String)
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emoji: String)
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpOutside emoji: String)
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, longPress emojis: [String])
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emoji: Emoji)
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emoji: Emoji)
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpOutside emoji: Emoji)
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, longPress emoji: Emoji)
 }
 
 final class EmojiCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var emojiButton: UIButton!
     weak var delegate: EmojiCollectionViewCellDelegate?
     lazy var vibrator: Vibratable = Vibrator()
-    var emojis: [String]! {
+    var emoji: Emoji! {
         didSet {
-            emojiButton.setTitle(emojis.first, for: .normal, animated: false)
+            emojiButton.setTitle(emoji.emojis.first, for: .normal, animated: false)
         }
     }
     var emojiFontSize: CGFloat = 29 {
@@ -40,27 +40,27 @@ final class EmojiCollectionViewCell: UICollectionViewCell {
 
 extension EmojiCollectionViewCell {
     @IBAction func emojiButtonTouchDown(_ button: UIButton) {
-        delegate?.emojiCollectionViewCell(self, touchDown: emojis[0])
+        delegate?.emojiCollectionViewCell(self, touchDown: emoji)
     }
     
     @IBAction func emojiButtonTouchUpInside(_ button: UIButton) {
-        delegate?.emojiCollectionViewCell(self, touchUpInside: emojis[0])
+        delegate?.emojiCollectionViewCell(self, touchUpInside: emoji)
     }
     
     @IBAction func emojiButtonTouchUpOutside(_ button: UIButton) {
-        delegate?.emojiCollectionViewCell(self, touchUpOutside: emojis[0])
+        delegate?.emojiCollectionViewCell(self, touchUpOutside: emoji)
     }
     
     @objc private func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        if emojis.count == 1 {
+        if emoji.emojis.count == 1 {
             if longPressGestureRecognizer.state == .ended {
-                delegate?.emojiCollectionViewCell(self, touchUpOutside: emojis[0])
+                delegate?.emojiCollectionViewCell(self, touchUpOutside: emoji)
             }
         } else {
             if longPressGestureRecognizer.state == .began {
                 vibrator.vibrate()
             }
-            delegate?.emojiCollectionViewCell(self, longPress: emojis)
+            delegate?.emojiCollectionViewCell(self, longPress: emoji)
         }
     }
 

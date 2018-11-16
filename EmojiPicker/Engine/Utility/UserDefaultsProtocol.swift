@@ -9,7 +9,7 @@
 import Foundation
 
 protocol UserDefaultsProtocol {
-    func array(forKey defaultName: String) -> [Any]?
+    func data(forKey defaultName: String) -> Data?
     func set(_ value: Any?, forKey defaultName: String)
 }
 
