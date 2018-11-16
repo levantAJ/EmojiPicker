@@ -23,7 +23,6 @@ open class EmojiPickerViewController: UIViewController {
     open var dismissAfterSelected = false
     open var size: CGSize = CGSize(width: 200, height: 300)
     open weak var delegate: EmojiPickerViewControllerDelegate?
-    var emojiPopoverVC: EmojiPopoverViewController!
     lazy var emojiPreviewer: EmojiPreviewable = EmojiPreviewer.shared
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +35,11 @@ open class EmojiPickerViewController: UIViewController {
         emojiPopoverVC.delegate = self
         emojiPopoverVC.isDarkMode = isDarkMode
         emojiPopoverVC.language = language
+        emojiPopoverVC.emojiFontSize = emojiFontSize
+        emojiPopoverVC.dismissAfterSelected = dismissAfterSelected
+        emojiPopoverVC.darkModeBackgroundColor = darkModeBackgroundColor
+        emojiPopoverVC.backgroundColor = backgroundColor
+        emojiPopoverVC.permittedArrowDirections = permittedArrowDirections
         emojiPopoverVC.preferredContentSize = size
         present(emojiPopoverVC, animated: true, completion: nil)
     }
@@ -56,6 +60,7 @@ extension EmojiPickerViewController: EmojiPickerContentViewControllerDelegate {
     }       
     
     func emojiPickerViewControllerDidDimiss(_ controller: EmojiPopoverViewController) {
+        emojiPreviewer.hide()
         dismiss(animated: true, completion: nil)
     }
     
