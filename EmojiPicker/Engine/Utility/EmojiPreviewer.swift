@@ -15,12 +15,10 @@ protocol EmojiPreviewable {
 
 final class EmojiPreviewer: UIView {
     @IBOutlet weak var singleEmojiWrapperView: UIView!
-//    @IBOutlet var singleEmojiWrapperViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var singleEmojiImageView: UIImageView!
     @IBOutlet weak var singleEmojiLabel: UILabel!
     
     @IBOutlet weak var multipleEmojisWrapperView: UIView!
-//    @IBOutlet var multipleEmojisWrapperViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var multipleEmojisLeftImageView: UIImageView!
     @IBOutlet weak var multipleEmojisCenterLeftImageView: UIImageView!
     @IBOutlet weak var multipleEmojisAnchorImageView: UIImageView!
