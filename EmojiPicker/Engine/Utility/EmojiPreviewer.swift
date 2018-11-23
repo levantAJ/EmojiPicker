@@ -26,8 +26,8 @@ final class EmojiPreviewer: UIView {
     @IBOutlet weak var multipleEmojisWrapperView: UIView!
     @IBOutlet weak var multipleEmojisLeftImageView: UIImageView!
     @IBOutlet weak var multipleEmojisCenterLeftImageView: UIImageView!
+    @IBOutlet weak var multipleEmojisCenterLeftImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var multipleEmojisAnchorImageView: UIImageView!
-    @IBOutlet weak var multipleEmojisAnchorImageViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var multipleEmojisCenterRightImageView: UIImageView!
     @IBOutlet weak var multipleEmojisRightImageView: UIImageView!
     @IBOutlet weak var multipleEmojisDefaultButton: UIButton!
@@ -152,27 +152,20 @@ extension EmojiPreviewer {
         multipleEmojisDarkButton.setTitle(emoji.emojis[4], for: .normal, animated: false)
         multipleEmojisBlackButton.setTitle(emoji.emojis[5], for: .normal, animated: false)
         
-        let anchorImage = UIImage(named: isDarkMode ? "anchorDarkEmojiTag" : "anchorLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
-        multipleEmojisAnchorImageView.image = anchorImage
-        
-        let leftImage = UIImage(named: isDarkMode ? "leftDarkEmojiTag" : "leftLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
-        multipleEmojisLeftImageView.image = leftImage
-        
-        let rightImage = UIImage(named: isDarkMode ? "rightDarkEmojiTag" : "rightLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
-        multipleEmojisRightImageView.image = rightImage
-        
-        let centerImage = UIImage(named: isDarkMode ? "centerDarkEmojiTag" : "centerLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
-        multipleEmojisCenterLeftImageView.image = centerImage
-        multipleEmojisCenterRightImageView.image = centerImage
+        multipleEmojisAnchorImageView.image = UIImage(named: isDarkMode ? "anchorDarkEmojiTag" : "anchorLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)
+        multipleEmojisLeftImageView.image = UIImage(named: isDarkMode ? "leftDarkEmojiTag" : "leftLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)
+        multipleEmojisRightImageView.image = UIImage(named: isDarkMode ? "rightDarkEmojiTag" : "rightLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)
+        multipleEmojisCenterLeftImageView.image = UIImage(named: isDarkMode ? "centerDarkEmojiTag" : "centerLightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)
+        multipleEmojisCenterRightImageView.image = multipleEmojisCenterLeftImageView.image
         
         let image = UIImage(named: isDarkMode ? "darkEmojiTag" : "lightEmojiTag", in: Bundle(for: EmojiPreviewer.self), compatibleWith: nil)!
         let width = Constant.EmojiCollectionViewCell.size.width + 37
         frame.size.height = width * image.size.height / image.size.width
-        layoutIfNeeded()
+        multipleEmojisWrapperView.layoutIfNeeded()
         frame.size.width = multipleEmojisWrapperView.frame.width
-        frame.origin.x = sourceRect.midX - frame.width/2
         frame.origin.y = sourceRect.minY - frame.height + sourceRect.height + 9
-        multipleEmojisAnchorImageViewLeadingConstraint.constant = sourceRect.midX - frame.origin.x - multipleEmojisAnchorImageView.frame.width / 2
+        center.x = sourceRect.midX
+        
         var factor: CGFloat = 0
         if sourceRect.minX <= multipleEmojisLeftImageView.frame.width + multipleEmojisAnchorImageView.frame.width/3 {
             factor = abs(frame.minX) - multipleEmojisLeftImageView.frame.width
@@ -181,9 +174,9 @@ extension EmojiPreviewer {
         } else if sourceView.frame.width - sourceRect.maxX <= multipleEmojisRightImageView.frame.width + multipleEmojisAnchorImageView.frame.width/3 {
             factor = sourceView.frame.width - frame.maxX + multipleEmojisRightImageView.frame.width
         } else if frame.maxX >= sourceView.frame.width {
-            factor = sourceView.frame.width - frame.maxX - multipleEmojisRightImageView.frame.width
+            factor = sourceView.frame.width - frame.maxX
         }
         frame.origin.x = frame.origin.x + factor
-        multipleEmojisAnchorImageViewLeadingConstraint.constant = multipleEmojisAnchorImageViewLeadingConstraint.constant - factor
+        multipleEmojisCenterLeftImageViewWidthConstraint.constant = sourceRect.minX - frame.minX - multipleEmojisAnchorImageView.frame.width/2
     }
 }

@@ -41,7 +41,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZr-gF-gnX" userLabel="Multiple Emojis Wrapper View">
-                    <rect key="frame" x="0.0" y="0.0" width="298" height="161"/>
+                    <rect key="frame" x="0.0" y="0.0" width="299" height="161"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="gzk-C3-C0J" userLabel="Left Image View">
                             <rect key="frame" x="0.0" y="0.0" width="24.5" height="161"/>
@@ -49,17 +49,23 @@
                                 <constraint firstAttribute="width" secondItem="gzk-C3-C0J" secondAttribute="height" multiplier="27:179" id="LoB-eg-7YK"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="MPe-vD-Oqv" userLabel="Right Image View">
-                            <rect key="frame" x="274" y="0.0" width="24" height="161"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="MPe-vD-Oqv" userLabel="Right Image View">
+                            <rect key="frame" x="275" y="0.0" width="24" height="161"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="MPe-vD-Oqv" secondAttribute="height" multiplier="27:179" id="0sj-RH-FXK"/>
+                            </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="centerLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="fql-Qc-sEz" userLabel="Center Left Image View">
-                            <rect key="frame" x="24.5" y="0.0" width="26.5" height="161"/>
+                            <rect key="frame" x="24.5" y="0.0" width="25" height="161"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="GGk-TK-u8S"/>
+                            </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="centerLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="ncy-UU-tbG" userLabel="Center Right Image View">
-                            <rect key="frame" x="132.5" y="0.0" width="142.5" height="161"/>
+                            <rect key="frame" x="132" y="0.0" width="143" height="161"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anchorLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="prc-BP-fb7" userLabel="Anchor Image View">
-                            <rect key="frame" x="50" y="0.0" width="82.5" height="161"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anchorLightEmojiTag" translatesAutoresizingMaskIntoConstraints="NO" id="prc-BP-fb7" userLabel="Anchor Image View">
+                            <rect key="frame" x="49.5" y="0.0" width="82.5" height="161"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="prc-BP-fb7" secondAttribute="height" multiplier="92:179" id="EmW-eR-YX3"/>
                             </constraints>
@@ -200,7 +206,6 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="prc-BP-fb7" firstAttribute="leading" secondItem="UZr-gF-gnX" secondAttribute="leading" constant="50" id="0iM-Ad-JWQ"/>
                         <constraint firstItem="ncy-UU-tbG" firstAttribute="bottom" secondItem="prc-BP-fb7" secondAttribute="bottom" id="3XJ-Rh-g3X"/>
                         <constraint firstItem="prc-BP-fb7" firstAttribute="top" secondItem="UZr-gF-gnX" secondAttribute="top" id="57g-Rq-59L"/>
                         <constraint firstAttribute="trailing" secondItem="MPe-vD-Oqv" secondAttribute="trailing" id="6bS-zM-FMn"/>
@@ -211,13 +216,12 @@
                         <constraint firstItem="LX6-7h-JVn" firstAttribute="trailing" secondItem="ncy-UU-tbG" secondAttribute="trailing" id="Ouo-9f-Y9I"/>
                         <constraint firstItem="gzk-C3-C0J" firstAttribute="bottom" secondItem="prc-BP-fb7" secondAttribute="bottom" id="U0J-7K-KUf"/>
                         <constraint firstItem="fql-Qc-sEz" firstAttribute="top" secondItem="prc-BP-fb7" secondAttribute="top" id="UvH-NY-22f"/>
-                        <constraint firstItem="MPe-vD-Oqv" firstAttribute="leading" secondItem="ncy-UU-tbG" secondAttribute="trailing" constant="-1" id="WCS-tU-7k0"/>
+                        <constraint firstItem="MPe-vD-Oqv" firstAttribute="leading" secondItem="ncy-UU-tbG" secondAttribute="trailing" id="WCS-tU-7k0"/>
                         <constraint firstAttribute="bottom" secondItem="prc-BP-fb7" secondAttribute="bottom" id="XeC-JE-G7S"/>
                         <constraint firstItem="LX6-7h-JVn" firstAttribute="top" secondItem="UZr-gF-gnX" secondAttribute="top" constant="8" id="Zfe-pL-h1J"/>
                         <constraint firstItem="ncy-UU-tbG" firstAttribute="leading" secondItem="prc-BP-fb7" secondAttribute="trailing" id="eu2-Ms-wxw"/>
                         <constraint firstItem="MPe-vD-Oqv" firstAttribute="top" secondItem="prc-BP-fb7" secondAttribute="top" id="ex6-KS-gfT"/>
-                        <constraint firstItem="MPe-vD-Oqv" firstAttribute="width" secondItem="gzk-C3-C0J" secondAttribute="width" id="hPx-87-TFB"/>
-                        <constraint firstItem="prc-BP-fb7" firstAttribute="leading" secondItem="fql-Qc-sEz" secondAttribute="trailing" constant="-1" id="hzs-Ox-oO7"/>
+                        <constraint firstItem="prc-BP-fb7" firstAttribute="leading" secondItem="fql-Qc-sEz" secondAttribute="trailing" id="hzs-Ox-oO7"/>
                         <constraint firstItem="LX6-7h-JVn" firstAttribute="bottom" secondItem="prc-BP-fb7" secondAttribute="centerY" constant="-2" id="mLq-6H-QW0"/>
                         <constraint firstItem="gzk-C3-C0J" firstAttribute="top" secondItem="prc-BP-fb7" secondAttribute="top" id="rcm-rq-dOz"/>
                         <constraint firstItem="ncy-UU-tbG" firstAttribute="top" secondItem="prc-BP-fb7" secondAttribute="top" id="wiG-o6-dUT"/>
@@ -246,9 +250,9 @@
             </variation>
             <connections>
                 <outlet property="multipleEmojisAnchorImageView" destination="prc-BP-fb7" id="ObR-UI-1kM"/>
-                <outlet property="multipleEmojisAnchorImageViewLeadingConstraint" destination="0iM-Ad-JWQ" id="Oum-0i-ccV"/>
                 <outlet property="multipleEmojisBlackButton" destination="dfO-dx-zZ3" id="uSF-tb-3ym"/>
                 <outlet property="multipleEmojisCenterLeftImageView" destination="fql-Qc-sEz" id="Clt-TV-avh"/>
+                <outlet property="multipleEmojisCenterLeftImageViewWidthConstraint" destination="GGk-TK-u8S" id="0Pd-ju-53z"/>
                 <outlet property="multipleEmojisCenterRightImageView" destination="ncy-UU-tbG" id="irh-Jj-oSu"/>
                 <outlet property="multipleEmojisDarkButton" destination="xHm-86-9vO" id="fry-I0-XUC"/>
                 <outlet property="multipleEmojisDefaultButton" destination="kO5-sD-k4Q" id="nqO-sr-gKX"/>
