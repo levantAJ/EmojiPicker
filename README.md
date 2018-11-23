@@ -79,12 +79,11 @@ emojiPickerVC.backgroundColor = UIColor.white.withAlphaComponent(0.5)
 emojiPickerVC.darkModeBackgroundColor = UIColor.white.withAlphaComponent(0.5)
 ```
 
-- Change language, default is `nil` as system language
+- Change language, default is `nil` as system language, now supported languages: `English`, `Vietnamese`
 
 ```swift
 emojiPickerVC.language = "en"
 ```
-  + Supported languages: `English`, `Vietnamese`
   
 - Change permitted arrow directions [UIPopoverArrowDirection](https://developer.apple.com/documentation/uikit/uipopoverarrowdirection), default is `any`
 
