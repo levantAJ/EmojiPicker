@@ -9,7 +9,6 @@
 import UIKit
 
 protocol EmojiPopoverViewControllerDelegate: class {
-    func emojiPickerViewController(_ controller: EmojiPopoverViewController, didSelect emoji: Emoji)
     func emojiPickerViewControllerDidDimiss(_ controller: EmojiPopoverViewController)
     func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emoji: Emoji, presentedType: EmojiPreviewerPresentedType, sourceView: UIView)
     func emojiPickerViewControllerHideEmojiPreviewer(_ controller: EmojiPopoverViewController)
@@ -82,7 +81,13 @@ final class EmojiPopoverViewController: UIViewController {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
-
+    
+    func select(emoji: Emoji) {
+        viewModel.select(emoji: emoji)
+        emojisCollectionView.reloadSections(IndexSet(integer: EmojiGroup.frequentlyUsed.index))
+        guard let indexPath = viewModel.indexPath(of: emoji) else { return }
+        emojisCollectionView.reloadItems(at: [indexPath])
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -191,7 +196,7 @@ extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
                 strongSelf.delegate?.emojiPickerViewControllerDidDimiss(strongSelf)
             }
         } else {
-            emojisCollectionView.reloadSections(IndexSet(integer: 0))
+            emojisCollectionView.reloadSections(IndexSet(integer: EmojiGroup.frequentlyUsed.index))
         }
     }
     

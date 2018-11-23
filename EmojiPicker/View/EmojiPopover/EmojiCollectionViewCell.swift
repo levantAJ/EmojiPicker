@@ -21,7 +21,8 @@ final class EmojiCollectionViewCell: UICollectionViewCell {
     lazy var vibrator: Vibratable = Vibrator()
     var emoji: Emoji! {
         didSet {
-            emojiButton.setTitle(emoji.emojis.first, for: .normal, animated: false)
+            let title = emoji.selectedEmoji ?? emoji.emojis.first
+            emojiButton.setTitle(title, for: .normal, animated: false)
         }
     }
     var emojiFontSize: CGFloat = 29 {
@@ -54,13 +55,13 @@ extension EmojiCollectionViewCell {
     @objc private func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if emoji.emojis.count == 1 {
             if longPressGestureRecognizer.state == .ended {
-                delegate?.emojiCollectionViewCell(self, touchUpOutside: emoji)
+                delegate?.emojiCollectionViewCell(self, touchUpInside: emoji)
             }
         } else {
             if longPressGestureRecognizer.state == .began {
                 vibrator.vibrate()
+                delegate?.emojiCollectionViewCell(self, longPress: emoji)
             }
-            delegate?.emojiCollectionViewCell(self, longPress: emoji)
         }
     }
 

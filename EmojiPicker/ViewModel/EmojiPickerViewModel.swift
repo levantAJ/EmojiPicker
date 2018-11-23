@@ -12,6 +12,7 @@ protocol EmojiPickerViewModelProtocol {
     var numberOfSections: Int { get }
     func numberOfEmojis(section: Int) -> Int
     func emoji(at indexPath: IndexPath) -> Emoji?
+    func indexPath(of emoji: Emoji) -> IndexPath?
     func select(emoji: Emoji)
 }
 
@@ -74,6 +75,22 @@ extension EmojiPickerViewModel: EmojiPickerViewModelProtocol {
         emojis[EmojiGroup.frequentlyUsed.index] = frequentlyUsedEmojis
         let data = try! JSONEncoder().encode(frequentlyUsedEmojis)
         userDefaults.set(data, forKey: Constant.EmojiPickerViewModel.frequentlyUsed)
+        
+        for item in emojis {
+            guard item.key != EmojiGroup.frequentlyUsed.index,
+                let index = item.value.firstIndex(where: { $0.emojis == emoji.emojis }) else { continue }
+            emojis[item.key]?[index] = emoji
+            break
+        }
+    }
+    
+    func indexPath(of emoji: Emoji) -> IndexPath? {
+        for item in emojis {
+            guard item.key != EmojiGroup.frequentlyUsed.index,
+                let index = item.value.firstIndex(where: { $0.emojis == emoji.emojis }) else { continue }
+            return IndexPath(item: index, section: item.key)
+        }
+        return nil
     }
 }
 
