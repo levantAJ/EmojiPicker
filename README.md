@@ -51,7 +51,7 @@ emojiPickerVC.delegate = self
 
 - Change size:
 ```swift
-emojiPickerVC.preferredContentSize = CGSize(width: 300, height: 400)
+emojiPickerVC.size = CGSize(width: 300, height: 400)
 ```
 
 - Change Emojis font size, default is `29`:
@@ -64,7 +64,7 @@ emojiPickerVC.emojiFontSize = 29
 emojiPickerVC.dismissAfterSelected = false
 ```
 
-- Apply dark mode, defautl is `false`
+- Apply dark mode, default is `false`
 ```swift
 emojiPickerVC.isDarkMode = false
 ```
@@ -84,6 +84,7 @@ emojiPickerVC.darkModeBackgroundColor = UIColor.white.withAlphaComponent(0.5)
 ```swift
 emojiPickerVC.language = "en"
 ```
+  + Supported languages: `English`, `Vietnamese`
 
 ## Author
 - [Tai Le](https://github.com/levantAJ)
