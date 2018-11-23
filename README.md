@@ -11,6 +11,7 @@ This library to show a popover to pick emojis for iOS
 
 <p align="center" >
   <img src="iphone-example.gif" title="EmojiPicker example" width='200' float=left>
+  <img src="ipad-example.gif" title="EmojiPicker example" width='200' float=left>
 </p>
 
 ## Requirements
