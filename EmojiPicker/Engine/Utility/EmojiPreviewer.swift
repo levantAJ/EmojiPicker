@@ -8,13 +8,9 @@
 
 import UIKit
 
-enum EmojiPreviewerPresentedType {
-    case single
-    case multiple
-}
-
 protocol EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, presentedType: EmojiPreviewerPresentedType, completion: ((String) -> Void)?)
+    func brief(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool)
+    func preview(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?)
     func hide()
 }
 
@@ -59,22 +55,24 @@ final class EmojiPreviewer: UIView {
 // MARK: - EmojiPreviewable
 
 extension EmojiPreviewer: EmojiPreviewable {
-    func show(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, presentedType: EmojiPreviewerPresentedType, completion: ((String) -> Void)?) {
+    func brief(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool) {
+        self.emoji = emoji
+        completion = nil
+        singleEmojiWrapperView.isHidden = false
+        multipleEmojisWrapperView.isHidden = true
+        setupView(for: emoji.emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+        
+        sourceView.addSubview(self)
+    }
+    
+    func preview(sourceView: UIView, sourceRect: CGRect, emoji: Emoji, emojiFontSize: CGFloat, isDarkMode: Bool, completion: ((String) -> Void)?) {
         self.emoji = emoji
         self.completion = completion
-        switch presentedType {
-        case .single:
-            singleEmojiWrapperView.isHidden = false
-            multipleEmojisWrapperView.isHidden = true
-            setupView(for: emoji.emojis[0], sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
-            completion?(emoji.emojis[0])
-        case .multiple:
-            guard emoji.emojis.count > 1 else { return }
-            singleEmojiWrapperView.isHidden = true
-            multipleEmojisWrapperView.isHidden = false
-            setupView(for: emoji, sourceView: sourceView, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
-        }
-    
+        guard emoji.emojis.count > 1 else { return }
+        singleEmojiWrapperView.isHidden = true
+        multipleEmojisWrapperView.isHidden = false
+        setupView(for: emoji, sourceView: sourceView, sourceRect: sourceRect, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+        
         sourceView.addSubview(self)
     }
     

@@ -10,8 +10,10 @@ import UIKit
 
 protocol EmojiPopoverViewControllerDelegate: class {
     func emojiPickerViewControllerDidDimiss(_ controller: EmojiPopoverViewController)
-    func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emoji: Emoji, presentedType: EmojiPreviewerPresentedType, sourceView: UIView)
-    func emojiPickerViewControllerHideEmojiPreviewer(_ controller: EmojiPopoverViewController)
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, brief emoji: Emoji, sourceView: UIView)
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, preview emoji: Emoji, sourceView: UIView)
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, didSelect emoji: Emoji)
+    func emojiPickerViewControllerHideDeselectEmoji(_ controller: EmojiPopoverViewController)
 }
 
 final class EmojiPopoverViewController: UIViewController {
@@ -176,36 +178,36 @@ extension EmojiPopoverViewController {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
+        delegate?.emojiPickerViewControllerHideDeselectEmoji(self)
     }
 }
 
 // MARK: - GroupCollectionViewCellDelegate
 
 extension EmojiPopoverViewController: EmojiCollectionViewCellDelegate {
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchDown emoji: Emoji) {
-        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emoji, presentedType: .single, sourceView: cell)
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, brief emoji: Emoji) {
+        delegate?.emojiPickerViewController(self, brief: emoji, sourceView: cell)
     }
     
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpInside emoji: Emoji) {
-        delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, select emoji: Emoji) {
+        delegate?.emojiPickerViewController(self, didSelect: emoji)
         viewModel.select(emoji: emoji)
         if dismissAfterSelected {
             dismiss(animated: true) { [weak self] in
                 guard let strongSelf = self else { return }
                 strongSelf.delegate?.emojiPickerViewControllerDidDimiss(strongSelf)
             }
-        } else {
+        } else if viewModel.indexPath(of: emoji) != nil {
             emojisCollectionView.reloadSections(IndexSet(integer: EmojiGroup.frequentlyUsed.index))
         }
     }
     
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, touchUpOutside emoji: Emoji) {
-        delegate?.emojiPickerViewControllerHideEmojiPreviewer(self)
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, deselect emoji: Emoji) {
+        delegate?.emojiPickerViewControllerHideDeselectEmoji(self)
     }
     
-    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, longPress emoji: Emoji) {
-        delegate?.emojiPickerViewController(self, presentEmojiPreviewer: emoji, presentedType: .multiple, sourceView: cell)
+    func emojiCollectionViewCell(_ cell: EmojiCollectionViewCell, preview emoji: Emoji) {
+        delegate?.emojiPickerViewController(self, preview: emoji, sourceView: cell)
     }
 }
 

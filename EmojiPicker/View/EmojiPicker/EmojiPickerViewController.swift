@@ -49,9 +49,19 @@ open class EmojiPickerViewController: UIViewController {
 // MARK: - EmojiPickerContentViewControllerDelegate
 
 extension EmojiPickerViewController: EmojiPopoverViewControllerDelegate {
-    func emojiPickerViewController(_ controller: EmojiPopoverViewController, presentEmojiPreviewer emoji: Emoji, presentedType: EmojiPreviewerPresentedType, sourceView: UIView) {
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, didSelect emoji: Emoji) {
+        emojiPreviewer.hide()
+        delegate?.emojiPickerViewController(self, didSelect: emoji.selectedEmoji ?? emoji.emojis.first!)
+    }
+    
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, brief emoji: Emoji, sourceView: UIView) {
         let sourceRect = sourceView.convert(sourceView.bounds, to: view)
-        emojiPreviewer.show(sourceView: view.window!, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode, presentedType: presentedType) { [weak self] selectedEmoji in
+        emojiPreviewer.brief(sourceView: view.window!, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+    }
+    
+    func emojiPickerViewController(_ controller: EmojiPopoverViewController, preview emoji: Emoji, sourceView: UIView) {
+        let sourceRect = sourceView.convert(sourceView.bounds, to: view)
+        emojiPreviewer.preview(sourceView: view.window!, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode) { [weak self] selectedEmoji in
             guard let strongSelf = self else { return }
             var emoji = emoji
             emoji.selectedEmoji = selectedEmoji
@@ -60,7 +70,7 @@ extension EmojiPickerViewController: EmojiPopoverViewControllerDelegate {
         }
     }
 
-    func emojiPickerViewControllerHideEmojiPreviewer(_ controller: EmojiPopoverViewController) {
+    func emojiPickerViewControllerHideDeselectEmoji(_ controller: EmojiPopoverViewController) {
         emojiPreviewer.hide()
     }       
     
