@@ -11,6 +11,7 @@ import Foundation
 protocol UserDefaultsProtocol {
     func data(forKey defaultName: String) -> Data?
     func set(_ value: Any?, forKey defaultName: String)
+    func dictionary(forKey defaultName: String) -> [String : Any]?
 }
 
 // MARK: - UserDefaultsProtocol
