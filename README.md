@@ -85,6 +85,12 @@ emojiPickerVC.darkModeBackgroundColor = UIColor.white.withAlphaComponent(0.5)
 emojiPickerVC.language = "en"
 ```
   + Supported languages: `English`, `Vietnamese`
+  
+- Change permitted arrow directions [UIPopoverArrowDirection](https://developer.apple.com/documentation/uikit/uipopoverarrowdirection), default is `any`
+
+```swift
+emojiPickerVC.permittedArrowDirections = .any
+```
 
 ## Author
 - [Tai Le](https://github.com/levantAJ)
