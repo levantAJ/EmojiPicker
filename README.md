@@ -27,7 +27,7 @@ There is a way to use EmojiPicker in your project:
 ### Installation with CocoaPods
 
 ```
-pod 'EmojiPicker', '1.0'
+pod 'EmojiPicker', '1.1'
 ```
 ### Build Project
 
