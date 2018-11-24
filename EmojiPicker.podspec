@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'EmojiPicker'
-  s.version = '1.0'
+  s.version = '1.1'
   s.summary = 'Emoji Picker'
   s.description = <<-DESC
 Emoji picker written on Swift 4.2 by levantAJ
