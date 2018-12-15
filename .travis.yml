@@ -1,0 +1,4 @@
+language: objective-c
+xcode_project: EmojiPicker.xcodeproj # path to your xcodeproj folder
+xcode_scheme: EmojiPickerTests
+xcode_destination: platform=iOS Simulator,OS=10.1,name=iPad Pro (9.7-inch)
