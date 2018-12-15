@@ -2,9 +2,10 @@
   <img src="icon.png" title="EmojiPicker logo" width='444' float=left>
 </p>
 
-[![Pod Version](https://cocoapod-badges.herokuapp.com/v/EmojiPicker/badge.png)](http://cocoadocs.org/docsets/EmojiPicker/)
-[![Pod Platform](https://cocoapod-badges.herokuapp.com/p/EmojiPicker/badge.png)](http://cocoadocs.org/docsets/EmojiPicker/)
+[![CocoaPods](https://img.shields.io/cocoapods/p/EmojiPicker.svg)](https://cocoapods.org/pods/EmojiPicker)
+[![CocoaPods](https://img.shields.io/cocoapods/v/EmojiPicker.svg)](http://cocoapods.org/pods/EmojiPicker)
 [![Pod License](https://cocoapod-badges.herokuapp.com/l/EmojiPicker/badge.png)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Build Status](https://travis-ci.org/levantAJ/EmojiPicker.svg?branch=master)](https://travis-ci.org/levantAJ/EmojiPicker)
 
 # EmojiPicker
 This library to show a popover to pick emojis for iOS
