@@ -49,6 +49,11 @@ open class EmojiPickerViewController: UIViewController {
         emojiPopoverVC.popoverPresentationController?.sourceRect = sourceRect
         present(emojiPopoverVC, animated: true, completion: nil)
     }
+    
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        emojiPreviewer.hide()
+        super.viewWillTransition(to: size, with: coordinator)
+    }
 }
 
 // MARK: - EmojiPickerContentViewControllerDelegate
