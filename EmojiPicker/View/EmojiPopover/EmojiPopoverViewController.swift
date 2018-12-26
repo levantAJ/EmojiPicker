@@ -84,6 +84,10 @@ final class EmojiPopoverViewController: UIViewController {
         return .none
     }
     
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+
     func select(emoji: Emoji) {
         viewModel.select(emoji: emoji)
         emojisCollectionView.reloadSections(IndexSet(integer: EmojiGroup.frequentlyUsed.index))
