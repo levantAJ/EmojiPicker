@@ -17,21 +17,6 @@ protocol EmojiPopoverViewControllerDelegate: class {
 }
 
 final class EmojiPopoverViewController: UIViewController {
-    var sourceRect: CGRect = .zero {
-        didSet {
-            popoverPresentationController?.sourceRect = sourceRect
-        }
-    }
-    var sourceView: UIView? {
-        didSet {
-            popoverPresentationController?.sourceView = sourceView
-        }
-    }
-    var permittedArrowDirections: UIPopoverArrowDirection = .any {
-        didSet {
-            popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
-        }
-    }
     var emojiFontSize: CGFloat = 29 {
         didSet {
             emojisCollectionView?.reloadData()
@@ -67,13 +52,6 @@ final class EmojiPopoverViewController: UIViewController {
     var selectedGroupCell: GroupCollectionViewCell?
     lazy var viewModel: EmojiPickerViewModelProtocol = EmojiPickerViewModel(userDefaults: UserDefaults.standard)
     lazy var vibrator: Vibratable = Vibrator()
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        modalPresentationStyle = .popover
-        popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
-        popoverPresentationController?.delegate = self
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -41,8 +41,12 @@ open class EmojiPickerViewController: UIViewController {
         emojiPopoverVC.dismissAfterSelected = dismissAfterSelected
         emojiPopoverVC.darkModeBackgroundColor = darkModeBackgroundColor
         emojiPopoverVC.backgroundColor = backgroundColor
-        emojiPopoverVC.permittedArrowDirections = permittedArrowDirections
         emojiPopoverVC.preferredContentSize = size
+        emojiPopoverVC.modalPresentationStyle = .popover
+        emojiPopoverVC.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
+        emojiPopoverVC.popoverPresentationController?.delegate = emojiPopoverVC
+        emojiPopoverVC.popoverPresentationController?.sourceView = view
+        emojiPopoverVC.popoverPresentationController?.sourceRect = sourceRect
         present(emojiPopoverVC, animated: true, completion: nil)
     }
 }
