@@ -66,12 +66,12 @@ extension EmojiPickerViewController: EmojiPopoverViewControllerDelegate {
     
     func emojiPickerViewController(_ controller: EmojiPopoverViewController, brief emoji: Emoji, sourceView: UIView) {
         let sourceRect = sourceView.convert(sourceView.bounds, to: view)
-        emojiPreviewer.brief(sourceView: view.window!, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+        emojiPreviewer.brief(sourceView: view, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
     }
     
     func emojiPickerViewController(_ controller: EmojiPopoverViewController, preview emoji: Emoji, sourceView: UIView) {
         let sourceRect = sourceView.convert(sourceView.bounds, to: view)
-        emojiPreviewer.preview(sourceView: view.window!, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode) { [weak self] selectedEmoji in
+        emojiPreviewer.preview(sourceView: view, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode) { [weak self] selectedEmoji in
             guard let strongSelf = self else { return }
             var emoji = emoji
             emoji.selectedEmoji = selectedEmoji
@@ -86,6 +86,6 @@ extension EmojiPickerViewController: EmojiPopoverViewControllerDelegate {
     
     func emojiPickerViewControllerDidDimiss(_ controller: EmojiPopoverViewController) {
         emojiPreviewer.hide()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
 }

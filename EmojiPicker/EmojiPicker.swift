@@ -12,7 +12,7 @@ open class EmojiPicker {
     public class var viewController: EmojiPickerViewController {
         let storyboard = UIStoryboard(name: "EmojiPicker", bundle: Bundle(for: EmojiPickerViewController.self))
         let viewController = storyboard.instantiateInitialViewController() as! EmojiPickerViewController
-        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalPresentationStyle = .overFullScreen
         return viewController
     }
 }
