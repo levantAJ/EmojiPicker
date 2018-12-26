@@ -28,15 +28,16 @@ open class EmojiPickerViewController: UIViewController {
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let storyboard = UIStoryboard(name: "EmojiPopover", bundle: Bundle(for: EmojiPopoverViewController.self))
-        emojiPopoverVC = storyboard.instantiateInitialViewController() as? EmojiPopoverViewController
-        emojiPopoverVC.delegate = self
-        emojiPopoverVC.sourceView = view
-        emojiPopoverVC.sourceRect = sourceRect
+        if emojiPopoverVC == nil {
+            let storyboard = UIStoryboard(name: "EmojiPopover", bundle: Bundle(for: EmojiPopoverViewController.self))
+            emojiPopoverVC = storyboard.instantiateInitialViewController() as? EmojiPopoverViewController
+        }
         emojiPopoverVC.delegate = self
         emojiPopoverVC.isDarkMode = isDarkMode
         emojiPopoverVC.language = language
-        emojiPopoverVC.emojiFontSize = emojiFontSize
+        if round(emojiPopoverVC.emojiFontSize) != round(emojiFontSize) {
+            emojiPopoverVC.emojiFontSize = emojiFontSize
+        }
         emojiPopoverVC.dismissAfterSelected = dismissAfterSelected
         emojiPopoverVC.darkModeBackgroundColor = darkModeBackgroundColor
         emojiPopoverVC.backgroundColor = backgroundColor
