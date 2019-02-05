@@ -28,21 +28,31 @@ open class EmojiPickerViewController: UIViewController {
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let storyboard = UIStoryboard(name: "EmojiPopover", bundle: Bundle(for: EmojiPopoverViewController.self))
-        emojiPopoverVC = storyboard.instantiateInitialViewController() as? EmojiPopoverViewController
-        emojiPopoverVC.delegate = self
-        emojiPopoverVC.sourceView = view
-        emojiPopoverVC.sourceRect = sourceRect
+        if emojiPopoverVC == nil {
+            let storyboard = UIStoryboard(name: "EmojiPopover", bundle: Bundle(for: EmojiPopoverViewController.self))
+            emojiPopoverVC = storyboard.instantiateInitialViewController() as? EmojiPopoverViewController
+        }
         emojiPopoverVC.delegate = self
         emojiPopoverVC.isDarkMode = isDarkMode
         emojiPopoverVC.language = language
-        emojiPopoverVC.emojiFontSize = emojiFontSize
+        if round(emojiPopoverVC.emojiFontSize) != round(emojiFontSize) {
+            emojiPopoverVC.emojiFontSize = emojiFontSize
+        }
         emojiPopoverVC.dismissAfterSelected = dismissAfterSelected
         emojiPopoverVC.darkModeBackgroundColor = darkModeBackgroundColor
         emojiPopoverVC.backgroundColor = backgroundColor
-        emojiPopoverVC.permittedArrowDirections = permittedArrowDirections
         emojiPopoverVC.preferredContentSize = size
+        emojiPopoverVC.modalPresentationStyle = .popover
+        emojiPopoverVC.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
+        emojiPopoverVC.popoverPresentationController?.delegate = emojiPopoverVC
+        emojiPopoverVC.popoverPresentationController?.sourceView = view
+        emojiPopoverVC.popoverPresentationController?.sourceRect = sourceRect
         present(emojiPopoverVC, animated: true, completion: nil)
+    }
+    
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        emojiPreviewer.hide()
+        super.viewWillTransition(to: size, with: coordinator)
     }
 }
 
@@ -56,12 +66,12 @@ extension EmojiPickerViewController: EmojiPopoverViewControllerDelegate {
     
     func emojiPickerViewController(_ controller: EmojiPopoverViewController, brief emoji: Emoji, sourceView: UIView) {
         let sourceRect = sourceView.convert(sourceView.bounds, to: view)
-        emojiPreviewer.brief(sourceView: view.window!, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
+        emojiPreviewer.brief(sourceView: view, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode)
     }
     
     func emojiPickerViewController(_ controller: EmojiPopoverViewController, preview emoji: Emoji, sourceView: UIView) {
         let sourceRect = sourceView.convert(sourceView.bounds, to: view)
-        emojiPreviewer.preview(sourceView: view.window!, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode) { [weak self] selectedEmoji in
+        emojiPreviewer.preview(sourceView: view, sourceRect: sourceRect, emoji: emoji, emojiFontSize: emojiFontSize, isDarkMode: isDarkMode) { [weak self] selectedEmoji in
             guard let strongSelf = self else { return }
             var emoji = emoji
             emoji.selectedEmoji = selectedEmoji
@@ -76,6 +86,6 @@ extension EmojiPickerViewController: EmojiPopoverViewControllerDelegate {
     
     func emojiPickerViewControllerDidDimiss(_ controller: EmojiPopoverViewController) {
         emojiPreviewer.hide()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
 }
